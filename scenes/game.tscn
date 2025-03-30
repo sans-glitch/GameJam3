@@ -1,13 +1,17 @@
-[gd_scene load_steps=9 format=4 uid="uid://c5k7dauwom50e"]
+[gd_scene load_steps=11 format=4 uid="uid://c5k7dauwom50e"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_l80jb"]
 [ext_resource type="PackedScene" uid="uid://mfretc5kklm5" path="res://scenes/course.tscn" id="2_rg2s8"]
 [ext_resource type="TileSet" uid="uid://cpqhp2n3mobqs" path="res://resources/tile_set.tres" id="3_ts5pa"]
 [ext_resource type="Texture2D" uid="uid://b4qke8voj4wia" path="res://assets/golf-ball.png" id="4_ladr3"]
 [ext_resource type="PackedScene" uid="uid://do1p7nc3o15d" path="res://scenes/selection_tile.tscn" id="5_da3uh"]
+[ext_resource type="Script" path="res://scripts/club_manager.gd" id="6_hrvwh"]
 [ext_resource type="Texture2D" uid="uid://bt1ev3otsy88j" path="res://assets/driver.png" id="6_khxi0"]
 [ext_resource type="Texture2D" uid="uid://b2uegtojjn0fg" path="res://assets/putter.png" id="7_suhnq"]
 [ext_resource type="Texture2D" uid="uid://bdp7hrrku7bnt" path="res://assets/flag.png" id="8_a5x5g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kl1hk"]
+font_size = 32
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_l80jb")
@@ -23,6 +27,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAIAAAABAAA
 tile_set = ExtResource("3_ts5pa")
 
 [node name="GolfBall" type="Sprite2D" parent="."]
+z_index = 2
 scale = Vector2(8, 8)
 texture = ExtResource("4_ladr3")
 centered = false
@@ -31,20 +36,34 @@ centered = false
 visible = false
 scale = Vector2(8, 8)
 
-[node name="Driver" type="Sprite2D" parent="."]
-position = Vector2(0, 520)
+[node name="ClubManager" type="Node2D" parent="."]
 scale = Vector2(8, 8)
+script = ExtResource("6_hrvwh")
+
+[node name="Driver" type="Sprite2D" parent="ClubManager"]
+z_index = 5
+position = Vector2(0, 65)
 texture = ExtResource("6_khxi0")
 centered = false
 
-[node name="Putter" type="Sprite2D" parent="."]
-position = Vector2(128, 512)
-scale = Vector2(8, 8)
+[node name="Putter" type="Sprite2D" parent="ClubManager"]
+z_index = 5
+position = Vector2(16, 64)
 texture = ExtResource("7_suhnq")
 centered = false
 
 [node name="Flag" type="Sprite2D" parent="."]
+z_index = 2
 scale = Vector2(8, 8)
 texture = ExtResource("8_a5x5g")
 centered = false
-offset = Vector2(0, -2)
+offset = Vector2(0, -3)
+
+[node name="StrokeLabel" type="Label" parent="."]
+offset_left = 678.0
+offset_top = 8.0
+offset_right = 911.0
+offset_bottom = 53.0
+text = "Strokes: 0"
+label_settings = SubResource("LabelSettings_kl1hk")
+horizontal_alignment = 2
