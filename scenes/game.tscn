@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=4 uid="uid://c5k7dauwom50e"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_l80jb"]
+[ext_resource type="PackedScene" uid="uid://mfretc5kklm5" path="res://scenes/course.tscn" id="2_rg2s8"]
+[ext_resource type="TileSet" uid="uid://cpqhp2n3mobqs" path="res://resources/tile_set.tres" id="3_ts5pa"]
+[ext_resource type="Texture2D" uid="uid://b4qke8voj4wia" path="res://assets/golf-ball.png" id="4_ladr3"]
+[ext_resource type="PackedScene" uid="uid://do1p7nc3o15d" path="res://scenes/selection_tile.tscn" id="5_da3uh"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_l80jb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(342, 319)
+
+[node name="Course" parent="." instance=ExtResource("2_rg2s8")]
+scale = Vector2(8, 8)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Course"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAIAAAABAAAAAAAAAAMAAAACAAAAAAAAAAQAAAACAAAAAAABAAAAAAABAAAAAAABAAEAAAABAAAAAAABAAIAAAABAAAAAAABAAMAAAABAAAAAAABAAQAAAACAAAAAAACAAAAAAABAAAAAAACAAEAAAABAAAAAAACAAIAAAABAAAAAAACAAMAAAAAAAAAAAACAAQAAAABAAAAAAADAAAAAAACAAAAAAADAAEAAAABAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAAAAAACAAAAAAAEAAEAAAACAAAAAAAEAAIAAAABAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAABAAAAAAA=")
+tile_set = ExtResource("3_ts5pa")
+
+[node name="GolfBall" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = ExtResource("4_ladr3")
+centered = false
+
+[node name="SelectionTile" parent="." instance=ExtResource("5_da3uh")]
+visible = false
+scale = Vector2(8, 8)
