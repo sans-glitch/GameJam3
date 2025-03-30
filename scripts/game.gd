@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 
 func _on_shot_selected(coords : Vector2i):
 	ball_pos = coords
-	gen_shot_circle(3)
+	gen_shot_circle(3 - $Course.get_tile_terrain_num(ball_pos))
 	print(coords)
 #
 func gen_shot_circle(rad : int):
