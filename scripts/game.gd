@@ -45,6 +45,10 @@ func _process(delta: float) -> void:
 		get_tree().reload_current_scene()
 	# Updates stroke counter
 	$StrokeLabel.text = "Strokes: " + str(strokes)
+	
+	if $Course.get_tile_terrain_num(ball_pos)==69:
+		await get_tree().create_timer(.5).timeout
+		get_tree().reload_current_scene()
 
 ## Signaled function that runs whenever a signal button is selected
 func _on_shot_selected(coords : Vector2i):
