@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bt1ev3otsy88j" path="res://assets/driver.png" id="6_khxi0"]
 [ext_resource type="Texture2D" uid="uid://b2uegtojjn0fg" path="res://assets/putter.png" id="7_suhnq"]
 [ext_resource type="PackedScene" uid="uid://bo2tax5rt6ywr" path="res://scenes/level_1.tscn" id="7_vtaks"]
-[ext_resource type="Texture2D" uid="uid://bdp7hrrku7bnt" path="res://assets/flag.png" id="8_a5x5g"]
+[ext_resource type="Texture2D" uid="uid://cys452j1jkh12" path="res://assets/flag copy.png" id="10_kvpfn"]
 [ext_resource type="FontFile" uid="uid://d1nrnwyl78knh" path="res://resources/friend-info/Friend Info.otf" id="11_kvpfn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kl1hk"]
@@ -60,8 +60,9 @@ scale = Vector2(8, 8)
 
 [node name="Flag" type="Sprite2D" parent="."]
 z_index = 2
-scale = Vector2(8, 8)
-texture = ExtResource("8_a5x5g")
+position = Vector2(8, 15)
+scale = Vector2(4, 4)
+texture = ExtResource("10_kvpfn")
 centered = false
 offset = Vector2(0, -3)
 
