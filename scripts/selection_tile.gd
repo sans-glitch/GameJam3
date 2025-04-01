@@ -17,6 +17,7 @@ static func new_button(coords : Vector2i, scale : Vector2, tile_size : int) -> S
 	button.coords = coords
 	button.position = Vector2(coords) * tile_size * scale
 	button.scale = scale
+	button.size = Vector2(tile_size, tile_size)
 	return button
 
 

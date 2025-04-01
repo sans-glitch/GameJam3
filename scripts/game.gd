@@ -9,6 +9,7 @@ var strokes : int
 var dirt_particles : CPUParticles2D
 var tile_size : int
 var ui_scale : Vector2
+var in_the_air : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -36,6 +37,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	$GolfBall.position = Vector2(ball_pos) * tile_size * ui_scale
+	if strokes == 0:
+		$GolfBall.position = (Vector2(ball_pos) * tile_size + Vector2(0,-3)) * ui_scale
 	# If the ball is in the hole
 	if ball_pos == hole_pos:
 		AudioManager.play('res://assets/sounds/hole.wav')
@@ -60,11 +63,11 @@ func _on_shot_selected(coords : Vector2i):
 		gen_shot_circle(get_shot_dist())
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("putter"):
+	if Input.is_action_just_pressed("putter") and not in_the_air:
 		curr_club_dist = 1
 		clear_shot_circle()
 		gen_shot_circle(get_shot_dist())
-	if Input.is_action_just_pressed("driver"):
+	if Input.is_action_just_pressed("driver") and not in_the_air:
 		curr_club_dist = 3
 		clear_shot_circle()
 		gen_shot_circle(get_shot_dist())
@@ -100,6 +103,7 @@ func gen_shot_circle(rad : int):
 
 ## Animates the ball's movement from its current position to the selected position when hit by driver
 func animate_driver_shot(coords : Vector2i):
+	in_the_air = true
 	var tween = get_tree().create_tween()
 	var time_mult = 3
 	tween.set_parallel()
@@ -122,9 +126,10 @@ func animate_driver_shot(coords : Vector2i):
 		0.125*time_mult
 	).set_ease(Tween.EASE_IN).set_delay(0.125*time_mult).set_trans(Tween.TRANS_QUART)
 	await tween.finished
-
+	in_the_air = false
 ## Animates the ball's movement from its current position to the selected position when hit by putter
 func animate_putter_shot(coords : Vector2i):
+	in_the_air = true
 	var tween = get_tree().create_tween()
 	var time_mult = 3
 	tween.set_parallel()
@@ -135,6 +140,7 @@ func animate_putter_shot(coords : Vector2i):
 		0.25*time_mult
 	).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	await tween.finished
+	in_the_air = false
 
 ## Returns the current shot distance calculated from the current club and terrain
 func get_shot_dist():

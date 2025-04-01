@@ -1,10 +1,9 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bqpvuagfk6ajk"]
 
-[ext_resource type="Texture2D" uid="uid://c002rw3ngv7vj" path="res://assets/Tilemap.png" id="1_ol2bu"]
+[ext_resource type="Texture2D" uid="uid://cte7614rhicd2" path="res://assets/Tilemap.png" id="1_ol2bu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hutec"]
 texture = ExtResource("1_ol2bu")
-texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
 1:0/0/custom_data_0 = 1
@@ -18,10 +17,8 @@ texture_region_size = Vector2i(32, 32)
 5:0/0/custom_data_1 = true
 6:0/0 = 0
 7:0/0 = 0
-7:0/0/custom_data_0 = 3
 
 [resource]
-tile_size = Vector2i(32, 32)
 custom_data_layer_0/name = "Terrain"
 custom_data_layer_0/type = 2
 custom_data_layer_1/name = "Begin"
