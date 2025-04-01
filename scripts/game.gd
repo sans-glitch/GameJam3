@@ -7,29 +7,35 @@ var hole_pos : Vector2i
 var strokes : int
 @export var particles : PackedScene
 var dirt_particles : CPUParticles2D
+var tile_size : int
+var ui_scale : Vector2
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	tile_size = 16
+	ui_scale = Vector2(8, 8)
+	$Course.scale = ui_scale
 	shot_selected.connect(_on_shot_selected)
 	# Centers Camera on course
-	$Camera2D.position.x = -((9 -$Course.tile_array[0].size()) * 8 * 16)/2
+	$Camera2D.position.x = -((9 -$Course.tile_array[0].size()) * ui_scale.x * tile_size)/2
 	# Determines the starting and hole tile coordinates
 	find_begin_and_end()
-	$Flag.position = Vector2(hole_pos) * 16 * $Course.scale
+	$Flag.position = Vector2(hole_pos) * tile_size * ui_scale
 	curr_club_dist = 3
 	# Generates the first shot selection buttons
 	gen_shot_circle(get_shot_dist())
 	# Sets up dirt particle node
 	dirt_particles = particles.instantiate()
-	dirt_particles.scale *= $Course.scale
-	dirt_particles.scale_amount_min *= $Course.scale.x/3
-	dirt_particles.scale_amount_max *= $Course.scale.x/3
+	dirt_particles.scale *= ui_scale
+	dirt_particles.scale_amount_min *= ui_scale.x/3
+	dirt_particles.scale_amount_max *= ui_scale.x/3
 	add_child(dirt_particles)
 	# Positions the golf ball
-	$GolfBall.position = Vector2(ball_pos) * 16 * $Course.scale
+	$GolfBall.position = Vector2(ball_pos) * tile_size * ui_scale
 
 
 func _process(delta: float) -> void:
-	$GolfBall.position = Vector2(ball_pos) * 16 * $Course.scale
+	$GolfBall.position = Vector2(ball_pos) * tile_size * ui_scale
 	# If the ball is in the hole
 	if ball_pos == hole_pos:
 		AudioManager.play('res://assets/sounds/hole.wav')
@@ -90,7 +96,7 @@ func gen_shot_circle(rad : int):
 		for col in $Course.tile_array[0].size():
 			var dist = ball_pos.distance_to(Vector2i(col, row))
 			if abs(rad - dist) < 0.5:
-				add_child(SelectionTile.new_button(Vector2i(col, row), $Course.scale))
+				add_child(SelectionTile.new_button(Vector2i(col, row), ui_scale, tile_size))
 
 ## Animates the ball's movement from its current position to the selected position when hit by driver
 func animate_driver_shot(coords : Vector2i):
@@ -100,19 +106,19 @@ func animate_driver_shot(coords : Vector2i):
 	tween.tween_property(
 		$GolfBall,
 		":position:x",
-		(Vector2(coords) * 8 * 16).x,
+		(Vector2(coords) * ui_scale.x * tile_size).x,
 		0.25*time_mult
 	).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	tween.tween_property(
 		$GolfBall,
 		":position:y",
-		($GolfBall.position.y + (Vector2(coords) * 8 * 16).y)/2 - (14*16),
+		($GolfBall.position.y + (Vector2(coords) * ui_scale.x * tile_size).y)/2 - (14*tile_size),
 		0.125*time_mult
 	).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	tween.tween_property(
 		$GolfBall,
 		":position:y",
-		(Vector2(coords) * 8 * 16).y,
+		(Vector2(coords) * ui_scale.x * tile_size).y,
 		0.125*time_mult
 	).set_ease(Tween.EASE_IN).set_delay(0.125*time_mult).set_trans(Tween.TRANS_QUART)
 	await tween.finished
@@ -125,7 +131,7 @@ func animate_putter_shot(coords : Vector2i):
 	tween.tween_property(
 		$GolfBall,
 		":position",
-		(Vector2(coords) * 8 * 16),
+		(Vector2(coords) * ui_scale.x * tile_size),
 		0.25*time_mult
 	).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	await tween.finished
@@ -145,6 +151,6 @@ func find_begin_and_end():
 
 ## Shows dirt spray particles in the shot direction
 func display_dirt(dir : Vector2):
-	dirt_particles.position = (ball_pos * 16 + Vector2i(8, 8)) * 8
+	dirt_particles.position = (ball_pos * tile_size + Vector2i(tile_size/2, tile_size/2)) * ui_scale.x
 	dirt_particles.direction = dir
 	dirt_particles.restart()

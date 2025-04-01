@@ -12,10 +12,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-static func new_button(coords : Vector2i, scale : Vector2) -> SelectionTile:
+static func new_button(coords : Vector2i, scale : Vector2, tile_size : int) -> SelectionTile:
 	var button: SelectionTile = BUTTON_SCENE.instantiate()
 	button.coords = coords
-	button.position = Vector2(coords) * 16 * scale
+	button.position = Vector2(coords) * tile_size * scale
 	button.scale = scale
 	return button
 
