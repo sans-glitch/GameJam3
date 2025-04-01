@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5k7dauwom50e"]
+[gd_scene load_steps=13 format=3 uid="uid://c5k7dauwom50e"]
 
 [ext_resource type="Script" uid="uid://bs8ngbl2jtp40" path="res://scripts/game.gd" id="1_l80jb"]
 [ext_resource type="PackedScene" uid="uid://bhs3krwjvd635" path="res://scenes/dirt_particles.tscn" id="2_fsa2s"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b2uegtojjn0fg" path="res://assets/putter.png" id="7_suhnq"]
 [ext_resource type="PackedScene" uid="uid://bo2tax5rt6ywr" path="res://scenes/level_1.tscn" id="7_vtaks"]
 [ext_resource type="Texture2D" uid="uid://bdp7hrrku7bnt" path="res://assets/flag.png" id="8_a5x5g"]
+[ext_resource type="FontFile" uid="uid://d1nrnwyl78knh" path="res://resources/friend-info/Friend Info.otf" id="11_kvpfn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kl1hk"]
 font_size = 32
@@ -69,6 +70,7 @@ offset_left = 399.0
 offset_top = 8.0
 offset_right = 632.0
 offset_bottom = 53.0
+theme_override_fonts/font = ExtResource("11_kvpfn")
 text = "Strokes: 0"
 label_settings = SubResource("LabelSettings_kl1hk")
 horizontal_alignment = 2
