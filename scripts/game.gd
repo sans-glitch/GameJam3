@@ -2,7 +2,7 @@ extends Node2D
 
 signal shot_selected(coords : Vector2i)
 var ball_pos : Vector2i
-var curr_club_dist
+@onready var club_manager = $Camera2D/ClubManager
 var hole_pos : Vector2i
 var strokes : int
 @export var particles : PackedScene
@@ -22,7 +22,7 @@ func _ready() -> void:
 	# Determines the starting and hole tile coordinates
 	find_begin_and_end()
 	$Flag.position = Vector2(hole_pos) * tile_size * ui_scale
-	curr_club_dist = 3
+	#curr_club_dist = 3
 	# Generates the first shot selection buttons
 	gen_shot_circle(get_shot_dist())
 	# Sets up dirt particle node
@@ -33,7 +33,7 @@ func _ready() -> void:
 	add_child(dirt_particles)
 	# Positions the golf ball
 	$GolfBall.position = Vector2(ball_pos) * tile_size * ui_scale
-
+	$Camera2D/ClubManager.switched_clubs.connect(_on_club_switched)
 
 func _process(delta: float) -> void:
 	$GolfBall.position = Vector2(ball_pos) * tile_size * ui_scale
@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 	# Updates stroke counter
 	$StrokeLabel.text = "Strokes: " + str(strokes)
 	
-	if $Course.get_tile_terrain_num(ball_pos)==69:
+	if $Course.get_tile_terrain_num(ball_pos) == 69:
 		await get_tree().create_timer(.5).timeout
 		get_tree().reload_current_scene()
 
@@ -54,27 +54,36 @@ func _process(delta: float) -> void:
 func _on_shot_selected(coords : Vector2i):
 	strokes += 1
 	clear_shot_circle()
-	if curr_club_dist == 3:
+	var land_sound = true
+	var club_name = club_manager.curr_club_name()
+	
+	if club_name == "driver":
 		display_dirt(coords - ball_pos)
 		AudioManager.play('res://assets/sounds/driver_shot.wav')
 		await animate_driver_shot(coords)
-	elif curr_club_dist == 1:
+	elif club_name == "putter":
 		AudioManager.play('res://assets/sounds/putt.wav')
 		await animate_putter_shot(coords)
-	AudioManager.play("res://assets/sounds/landing.wav")
+		land_sound = false
+	elif club_name == "wedge":
+		AudioManager.play('res://assets/sounds/driver_shot.wav')
+		await animate_high_shot(coords)
+	elif club_name == "iron":
+		AudioManager.play('res://assets/sounds/driver_shot.wav')
+		await animate_high_shot(coords)
+	
+	if land_sound:
+		AudioManager.play("res://assets/sounds/landing.wav")
+	
 	ball_pos = coords
 	if coords != hole_pos:
 		gen_shot_circle(get_shot_dist())
 
+func _on_club_switched():
+	clear_shot_circle()
+	gen_shot_circle(get_shot_dist())
+
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("putter") and not in_the_air:
-		curr_club_dist = 1
-		clear_shot_circle()
-		gen_shot_circle(get_shot_dist())
-	if Input.is_action_just_pressed("driver") and not in_the_air:
-		curr_club_dist = 3
-		clear_shot_circle()
-		gen_shot_circle(get_shot_dist())
 	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
 
@@ -131,6 +140,34 @@ func animate_driver_shot(coords : Vector2i):
 	).set_ease(Tween.EASE_IN).set_delay(0.125*time_mult).set_trans(Tween.TRANS_QUART)
 	await tween.finished
 	in_the_air = false
+
+## Animates the ball's movement from its current position to the selected position when hit by wedge or iron
+func animate_high_shot(coords : Vector2i):
+	in_the_air = true
+	var tween = get_tree().create_tween()
+	var time_mult = 3
+	tween.set_parallel()
+	tween.tween_property(
+		$GolfBall,
+		":position:x",
+		(Vector2(coords) * ui_scale.x * tile_size).x,
+		0.25*time_mult
+	)
+	tween.tween_property(
+		$GolfBall,
+		":position:y",
+		($GolfBall.position.y + (Vector2(coords) * ui_scale.x * tile_size).y)/2 - (16*tile_size),
+		0.125*time_mult
+	).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(
+		$GolfBall,
+		":position:y",
+		(Vector2(coords) * ui_scale.x * tile_size).y,
+		0.125*time_mult
+	).set_ease(Tween.EASE_IN).set_delay(0.125*time_mult).set_trans(Tween.TRANS_QUAD)
+	await tween.finished
+	in_the_air = false
+
 ## Animates the ball's movement from its current position to the selected position when hit by putter
 func animate_putter_shot(coords : Vector2i):
 	in_the_air = true
@@ -148,7 +185,11 @@ func animate_putter_shot(coords : Vector2i):
 
 ## Returns the current shot distance calculated from the current club and terrain
 func get_shot_dist():
-	return max(0, curr_club_dist - $Course.get_tile_terrain_num(ball_pos))
+	var club_dist = club_manager.curr_club_dist
+	var terrain_amt = $Course.get_tile_terrain_num(ball_pos)
+	if club_manager.terrain_dependant:
+		return max(0, club_dist - terrain_amt)
+	return club_dist
 
 ## Finds start and end tile on course
 func find_begin_and_end():
