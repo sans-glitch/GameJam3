@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=3 uid="uid://c5k7dauwom50e"]
 
-[ext_resource type="Script" uid="uid://bs8ngbl2jtp40" path="res://scripts/game.gd" id="1_l80jb"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_l80jb"]
 [ext_resource type="PackedScene" uid="uid://bhs3krwjvd635" path="res://scenes/dirt_particles.tscn" id="2_fsa2s"]
 [ext_resource type="PackedScene" uid="uid://mfretc5kklm5" path="res://scenes/course.tscn" id="2_rg2s8"]
 [ext_resource type="Texture2D" uid="uid://b4qke8voj4wia" path="res://assets/golf-ball.png" id="4_ladr3"]
 [ext_resource type="PackedScene" uid="uid://do1p7nc3o15d" path="res://scenes/selection_tile.tscn" id="5_da3uh"]
-[ext_resource type="Script" uid="uid://befwamj0fhftu" path="res://scripts/club_manager.gd" id="6_hrvwh"]
+[ext_resource type="Script" path="res://scripts/club_manager.gd" id="6_hrvwh"]
 [ext_resource type="Texture2D" uid="uid://bt1ev3otsy88j" path="res://assets/driver.png" id="6_khxi0"]
-[ext_resource type="PackedScene" uid="uid://iwek4ketlkvg" path="res://scenes/level_4.tscn" id="7_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://djnll68ks127i" path="res://scenes/level_5.tscn" id="7_5ntv5"]
 [ext_resource type="Texture2D" uid="uid://b2uegtojjn0fg" path="res://assets/putter.png" id="7_suhnq"]
 [ext_resource type="Texture2D" uid="uid://cys452j1jkh12" path="res://assets/flag copy.png" id="10_kvpfn"]
 [ext_resource type="FontFile" uid="uid://d1nrnwyl78knh" path="res://resources/friend-info/Friend Info.otf" id="11_kvpfn"]
@@ -46,7 +46,7 @@ centered = false
 [node name="Course" parent="." instance=ExtResource("2_rg2s8")]
 scale = Vector2(8, 8)
 
-[node name="level_4" parent="Course" instance=ExtResource("7_kvpfn")]
+[node name="Level5" parent="Course" instance=ExtResource("7_5ntv5")]
 
 [node name="GolfBall" type="Sprite2D" parent="."]
 z_index = 2
