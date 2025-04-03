@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://drnanmwej05il"]
+
+[ext_resource type="Script" uid="uid://cf8xeu5g88tbm" path="res://scripts/inventory.gd" id="1_hj2ta"]
+[ext_resource type="Texture2D" uid="uid://bt1ev3otsy88j" path="res://assets/driver.png" id="1_qw0r6"]
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_hj2ta")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1152.0
+offset_bottom = 644.0
+color = Color(0.159858, 0.689794, 0.75731, 1)
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
+offset_left = 44.0
+offset_top = 42.0
+offset_right = 60.0
+offset_bottom = 62.0
+scale = Vector2(10, 10)
+texture_normal = ExtResource("1_qw0r6")
+
+[connection signal="pressed" from="CanvasLayer/TextureButton" to="." method="_on_texture_button_pressed"]
