@@ -3,6 +3,7 @@ extends Node2D
 signal shot_selected(coords : Vector2i)
 var ball_pos : Vector2i
 @onready var club_manager = $Camera2D/ClubManager
+@onready var course: Node2D = $Course
 var hole_pos : Vector2i
 var strokes : int
 @export var particles : PackedScene
@@ -15,10 +16,11 @@ var in_the_air : bool
 func _ready() -> void:
 	tile_size = 16
 	ui_scale = Vector2(8, 8)
+	set_ui_scale()
 	$Course.scale = ui_scale
 	shot_selected.connect(_on_shot_selected)
 	# Centers Camera on course
-	$Camera2D.position.x = -((9 -$Course.tile_array[0].size()) * ui_scale.x * tile_size)/2
+	#$Camera2D.position.x = -((9 -$Course.tile_array[0].size()) * ui_scale.x * tile_size)/2
 	# Determines the starting and hole tile coordinates
 	find_begin_and_end()
 	$Flag.position = Vector2(hole_pos) * tile_size * ui_scale
@@ -205,3 +207,11 @@ func display_dirt(dir : Vector2):
 	dirt_particles.position = (ball_pos * tile_size + Vector2i(tile_size/2, tile_size/2)) * ui_scale.x
 	dirt_particles.direction = dir
 	dirt_particles.restart()
+
+func set_ui_scale():
+	var scale = min(get_viewport_rect().size.x/course.get_course_dimensions().x, get_viewport_rect().size.y/course.get_course_dimensions().y)
+	print(scale)
+	ui_scale = Vector2(scale/tile_size, scale/tile_size)
+	$Camera2D.position.x = -(get_viewport_rect().size.x - (course.get_course_dimensions().x * ui_scale.x * tile_size))/2
+	$Camera2D.position.y = -(get_viewport_rect().size.y - (course.get_course_dimensions().y * ui_scale.y * tile_size))/2
+	
