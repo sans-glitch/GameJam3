@@ -4,6 +4,7 @@ extends Node2D
 var curr_club_dist : int
 var terrain_dependant : bool
 signal switched_clubs
+@onready var club_label: Label = $Club
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,18 +30,22 @@ func _input(event: InputEvent) -> void:
 		curr_club_dist = 3
 		terrain_dependant = true
 		switched_clubs.emit()
+		club_label.text = "driver"		
 	elif Input.is_action_just_pressed("putter"):
 		curr_club_dist = 1
 		terrain_dependant = true
 		switched_clubs.emit()
+		club_label.text = "putter"	
 	elif Input.is_action_just_pressed("iron"):
 		curr_club_dist = 2
 		terrain_dependant = false
 		switched_clubs.emit()
+		club_label.text = "iron"	
 	elif Input.is_action_just_pressed("wedge"):
 		curr_club_dist = 1
 		terrain_dependant = false
 		switched_clubs.emit()
+		club_label.text = "wedge"	
 		
 func set_club(club : String):
 	if club=="driver":
@@ -56,6 +61,7 @@ func set_club(club : String):
 	elif club=="wedge":
 		curr_club_dist = 1
 		terrain_dependant = false
+	club_label.text = club		
 	switched_clubs.emit()
 		
 func curr_club_name():
