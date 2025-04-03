@@ -28,3 +28,7 @@ func is_tile_beginning(coords : Vector2i) -> bool:
 	
 func is_tile_end(coords : Vector2i) -> bool:
 	return tile_map.get_cell_tile_data(coords).get_custom_data("End")
+
+func get_course_dimensions():
+	var map_rect = tile_map.get_used_rect()
+	return map_rect.size
