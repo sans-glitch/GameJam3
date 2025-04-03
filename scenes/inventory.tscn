@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://drnanmwej05il"]
+[gd_scene load_steps=6 format=3 uid="uid://drnanmwej05il"]
 
 [ext_resource type="Script" uid="uid://cf8xeu5g88tbm" path="res://scripts/inventory.gd" id="1_hj2ta"]
 [ext_resource type="Texture2D" uid="uid://bt1ev3otsy88j" path="res://assets/driver.png" id="1_qw0r6"]
+[ext_resource type="Texture2D" uid="uid://b2uegtojjn0fg" path="res://assets/putter.png" id="3_ty45s"]
+[ext_resource type="Texture2D" uid="uid://drwqi3xs6ouji" path="res://assets/iron.webp" id="4_53g1v"]
+[ext_resource type="Texture2D" uid="uid://dbmgr5d5fh4bt" path="res://assets/wedge.webp" id="5_yyk2a"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -17,12 +20,39 @@ offset_right = 1152.0
 offset_bottom = 644.0
 color = Color(0.159858, 0.689794, 0.75731, 1)
 
-[node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
+[node name="Driver" type="TextureButton" parent="CanvasLayer"]
 offset_left = 44.0
 offset_top = 42.0
 offset_right = 60.0
-offset_bottom = 62.0
+offset_bottom = 61.0
 scale = Vector2(10, 10)
 texture_normal = ExtResource("1_qw0r6")
 
-[connection signal="pressed" from="CanvasLayer/TextureButton" to="." method="_on_texture_button_pressed"]
+[node name="Putter" type="TextureButton" parent="CanvasLayer"]
+offset_left = 234.0
+offset_top = 43.0
+offset_right = 250.0
+offset_bottom = 62.0
+scale = Vector2(10, 10)
+texture_normal = ExtResource("3_ty45s")
+
+[node name="Iron" type="TextureButton" parent="CanvasLayer"]
+offset_left = 46.0
+offset_top = 250.0
+offset_right = 1046.0
+offset_bottom = 1250.0
+scale = Vector2(0.149565, 0.1672)
+texture_normal = ExtResource("4_53g1v")
+
+[node name="Wedge" type="TextureButton" parent="CanvasLayer"]
+offset_left = 237.0
+offset_top = 245.0
+offset_right = 1437.0
+offset_bottom = 1582.0
+scale = Vector2(0.12434, 0.132024)
+texture_normal = ExtResource("5_yyk2a")
+
+[connection signal="pressed" from="CanvasLayer/Driver" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Putter" to="." method="_on_putter_pressed"]
+[connection signal="pressed" from="CanvasLayer/Iron" to="." method="_on_iron_pressed"]
+[connection signal="pressed" from="CanvasLayer/Wedge" to="." method="_on_wedge_pressed"]

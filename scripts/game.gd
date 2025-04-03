@@ -18,6 +18,7 @@ func _ready() -> void:
 	ui_scale = Vector2(8, 8)
 	set_ui_scale()
 	$Course.scale = ui_scale
+	$GolfBall.scale = ui_scale
 	shot_selected.connect(_on_shot_selected)
 	# Centers Camera on course
 	#$Camera2D.position.x = -((9 -$Course.tile_array[0].size()) * ui_scale.x * tile_size)/2

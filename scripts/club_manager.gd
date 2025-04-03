@@ -43,11 +43,10 @@ func _input(event: InputEvent) -> void:
 		switched_clubs.emit()
 		
 func set_club(club : String):
-	if $"../..".in_the_air:
-		return
 	if club=="driver":
 		curr_club_dist = 3
 		terrain_dependant = true
+		print("driver")
 	elif club=="putter":
 		curr_club_dist = 1
 		terrain_dependant = true
