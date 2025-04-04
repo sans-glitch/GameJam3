@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://scripts/club_manager.gd" id="6_hrvwh"]
 [ext_resource type="Texture2D" uid="uid://bt1ev3otsy88j" path="res://assets/driver.png" id="6_khxi0"]
 [ext_resource type="Texture2D" uid="uid://b2uegtojjn0fg" path="res://assets/putter.png" id="7_suhnq"]
-[ext_resource type="PackedScene" uid="uid://bhnvvfy4e5ih2" path="res://scenes/level_13.tscn" id="8_dinhu"]
+[ext_resource type="PackedScene" uid="uid://bhnvvfy4e5ih2" path="res://scenes/levels/level_13.tscn" id="8_dinhu"]
 [ext_resource type="Texture2D" uid="uid://cys452j1jkh12" path="res://assets/flag copy.png" id="10_kvpfn"]
 [ext_resource type="FontFile" uid="uid://d1nrnwyl78knh" path="res://resources/friend-info/Friend Info.otf" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://dp78tnp6acym0" path="res://scenes/inventory.tscn" id="12_dinhu"]
@@ -59,7 +59,7 @@ text = "Club
 label_settings = SubResource("LabelSettings_kl1hk")
 horizontal_alignment = 2
 
-[node name="Course" parent="." instance=ExtResource("2_rg2s8")]
+[node name="Course" parent="." groups=["Course"] instance=ExtResource("2_rg2s8")]
 scale = Vector2(8, 8)
 
 [node name="level_13" parent="Course" instance=ExtResource("8_dinhu")]
