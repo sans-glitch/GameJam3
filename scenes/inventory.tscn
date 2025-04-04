@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://drnanmwej05il"]
+[gd_scene load_steps=6 format=3 uid="uid://dp78tnp6acym0"]
 
-[ext_resource type="Script" uid="uid://cf8xeu5g88tbm" path="res://scripts/inventory.gd" id="1_hj2ta"]
+[ext_resource type="Script" path="res://scripts/inventory.gd" id="1_hj2ta"]
 [ext_resource type="Texture2D" uid="uid://bt1ev3otsy88j" path="res://assets/driver.png" id="1_qw0r6"]
 [ext_resource type="Texture2D" uid="uid://b2uegtojjn0fg" path="res://assets/putter.png" id="3_ty45s"]
 [ext_resource type="Texture2D" uid="uid://drwqi3xs6ouji" path="res://assets/iron.webp" id="4_53g1v"]
@@ -18,7 +18,7 @@ script = ExtResource("1_hj2ta")
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 offset_right = 1152.0
 offset_bottom = 644.0
-color = Color(0.159858, 0.689794, 0.75731, 1)
+color = Color(0, 0, 0, 0.235294)
 
 [node name="Driver" type="TextureButton" parent="CanvasLayer"]
 offset_left = 44.0
