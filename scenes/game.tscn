@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://do1p7nc3o15d" path="res://scenes/selection_tile.tscn" id="5_da3uh"]
 [ext_resource type="Script" path="res://scripts/club_manager.gd" id="6_hrvwh"]
 [ext_resource type="Texture2D" uid="uid://bt1ev3otsy88j" path="res://assets/driver.png" id="6_khxi0"]
-[ext_resource type="PackedScene" uid="uid://bo2tax5rt6ywr" path="res://scenes/levels/level_1.tscn" id="7_anyyy"]
 [ext_resource type="Texture2D" uid="uid://b2uegtojjn0fg" path="res://assets/putter.png" id="7_suhnq"]
+[ext_resource type="PackedScene" uid="uid://bhnvvfy4e5ih2" path="res://scenes/level_13.tscn" id="8_dinhu"]
 [ext_resource type="Texture2D" uid="uid://cys452j1jkh12" path="res://assets/flag copy.png" id="10_kvpfn"]
 [ext_resource type="FontFile" uid="uid://d1nrnwyl78knh" path="res://resources/friend-info/Friend Info.otf" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://dp78tnp6acym0" path="res://scenes/inventory.tscn" id="12_dinhu"]
@@ -46,10 +46,23 @@ position = Vector2(16, 64)
 texture = ExtResource("7_suhnq")
 centered = false
 
-[node name="Course" parent="." groups=["Course"] instance=ExtResource("2_rg2s8")]
+[node name="Club" type="Label" parent="Camera2D/ClubManager"]
+z_index = 2
+offset_left = 27.125
+offset_top = 1.0
+offset_right = 260.125
+offset_bottom = 72.0
+scale = Vector2(0.133305, 0.127375)
+theme_override_fonts/font = ExtResource("11_kvpfn")
+text = "Club
+"
+label_settings = SubResource("LabelSettings_kl1hk")
+horizontal_alignment = 2
+
+[node name="Course" parent="." instance=ExtResource("2_rg2s8")]
 scale = Vector2(8, 8)
 
-[node name="Level1" parent="Course" instance=ExtResource("7_anyyy")]
+[node name="level_13" parent="Course" instance=ExtResource("8_dinhu")]
 
 [node name="GolfBall" type="Sprite2D" parent="."]
 z_index = 2
