@@ -3,6 +3,8 @@ extends Control
 @onready var club_manager: Node2D = $"../Camera2D/ClubManager"
 @onready var inventory: CanvasLayer = $CanvasLayer
 
+func _ready() -> void:
+	toggle_inv()
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("inventory"):

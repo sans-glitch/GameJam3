@@ -45,6 +45,7 @@ func _process(delta: float) -> void:
 	# If the ball is in the hole
 	if ball_pos == hole_pos:
 		AudioManager.play('res://assets/sounds/hole.wav')
+		LevelManager.increase_level_num()
 		get_tree().reload_current_scene()
 	# Updates stroke counter
 	$StrokeLabel.text = "Strokes: " + str(strokes)
@@ -69,16 +70,21 @@ func _on_shot_selected(coords : Vector2i):
 		await animate_putter_shot(coords)
 		land_sound = false
 	elif club_name == "wedge":
-		AudioManager.play('res://assets/sounds/driver_shot.wav')
+		AudioManager.play('res://assets/sounds/swing_hit.wav')
 		await animate_high_shot(coords)
 	elif club_name == "iron":
-		AudioManager.play('res://assets/sounds/driver_shot.wav')
+		AudioManager.play('res://assets/sounds/swing_hit.wav')
 		await animate_high_shot(coords)
+	
+	ball_pos = coords
+	if $Course.get_tile_terrain_num(ball_pos) == 69:
+		AudioManager.play("res://assets/sounds/small_splash.wav")
+		return
 	
 	if land_sound:
 		AudioManager.play("res://assets/sounds/landing.wav")
 	
-	ball_pos = coords
+	
 	if coords != hole_pos:
 		gen_shot_circle(get_shot_dist())
 
@@ -88,6 +94,9 @@ func _on_club_switched():
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("reset"):
+		get_tree().reload_current_scene()
+	if Input.is_action_just_pressed("ui_accept"):
+		LevelManager.increase_level_num()
 		get_tree().reload_current_scene()
 
 ## Fades out and deletes the current shot buttons
@@ -211,7 +220,6 @@ func display_dirt(dir : Vector2):
 
 func set_ui_scale():
 	var scale = min(get_viewport_rect().size.x/course.get_course_dimensions().x, get_viewport_rect().size.y/course.get_course_dimensions().y)
-	print(scale)
 	ui_scale = Vector2(scale/tile_size, scale/tile_size)
 	$Camera2D.position.x = -(get_viewport_rect().size.x - (course.get_course_dimensions().x * ui_scale.x * tile_size))/2
 	$Camera2D.position.y = -(get_viewport_rect().size.y - (course.get_course_dimensions().y * ui_scale.y * tile_size))/2
