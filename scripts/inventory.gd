@@ -5,8 +5,23 @@ extends Control
 @onready var course: Node2D = $"../Course"
 
 func _ready() -> void:
+	if club_manager.is_available_club("driver"):
+		$CanvasLayer/Driver.show()
+	else:
+		$CanvasLayer/Driver.hide()
+	if club_manager.is_available_club("putter"):
+		$CanvasLayer/Putter.show()
+	else:
+		$CanvasLayer/Putter.hide()
+	if club_manager.is_available_club("iron"):
+		$CanvasLayer/Iron.show()
+	else:
+		$CanvasLayer/Iron.hide()
+	if club_manager.is_available_club("wedge"):
+		$CanvasLayer/Wedge.show()
+	else:
+		$CanvasLayer/Wedge.hide()
 	
-	pass
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("inventory"):

@@ -37,6 +37,7 @@ func _ready() -> void:
 	# Positions the golf ball
 	$GolfBall.position = Vector2(ball_pos) * tile_size * ui_scale
 	$Camera2D/ClubManager.switched_clubs.connect(_on_club_switched)
+	$Camera2D/HoleLabel.text = "Hole " + str(LevelManager.curr_level)
 	if LevelManager.curr_level == 1:
 		$Tutorial1.show()
 	elif LevelManager.curr_level == 2:
@@ -107,8 +108,11 @@ func _input(event: InputEvent) -> void:
 			soft_reset()
 			return
 		get_tree().reload_current_scene()
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_page_up"):
 		LevelManager.increase_level_num()
+		get_tree().reload_current_scene()
+	if Input.is_action_just_pressed("ui_page_down"):
+		LevelManager.curr_level -= 1
 		get_tree().reload_current_scene()
 
 func soft_reset():

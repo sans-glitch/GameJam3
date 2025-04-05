@@ -12,33 +12,37 @@ func _ready() -> void:
 	terrain_dependant = true
 	
 
+func is_available_club(club_name : String) -> bool:
+	return LevelManager.get_curr_level_clubs().has(club_name)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	pass
 	# Default positions
-	$Driver.position = Vector2(0, 65)
-	$Putter.position = Vector2(16, 65)
-	if curr_club_name() == "driver":
-		$Driver.position = Vector2(0, 65 - 2)
-	if curr_club_name() == "putter":
-		$Putter.position = Vector2(16, 65 - 2)
+	#$Driver.position = Vector2(0, 65)
+	#$Putter.position = Vector2(16, 65)
+	#if curr_club_name() == "driver":
+		#$Driver.position = Vector2(0, 65 - 2)
+	#if curr_club_name() == "putter":
+		#$Putter.position = Vector2(16, 65 - 2)
 
 func _input(event: InputEvent) -> void:
 	if $"../..".in_the_air:
 		return
-	if Input.is_action_just_pressed("driver"):
+	if Input.is_action_just_pressed("driver") and is_available_club("driver"):
 		curr_club_dist = 3
 		terrain_dependant = true
 		switched_clubs.emit()
-	elif Input.is_action_just_pressed("putter"):
+	elif Input.is_action_just_pressed("putter") and is_available_club("putter"):
 		curr_club_dist = 1
 		terrain_dependant = true
 		switched_clubs.emit()
-	elif Input.is_action_just_pressed("iron"):
+	elif Input.is_action_just_pressed("iron") and is_available_club("iron"):
 		curr_club_dist = 2
 		terrain_dependant = false
 		switched_clubs.emit()
-	elif Input.is_action_just_pressed("wedge"):
+	elif Input.is_action_just_pressed("wedge") and is_available_club("wedge"):
 		curr_club_dist = 1
 		terrain_dependant = false
 		switched_clubs.emit()
