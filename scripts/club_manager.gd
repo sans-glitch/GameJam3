@@ -30,23 +30,20 @@ func _input(event: InputEvent) -> void:
 		curr_club_dist = 3
 		terrain_dependant = true
 		switched_clubs.emit()
-		club_label.text = "driver"		
 	elif Input.is_action_just_pressed("putter"):
 		curr_club_dist = 1
 		terrain_dependant = true
 		switched_clubs.emit()
-		club_label.text = "putter"	
 	elif Input.is_action_just_pressed("iron"):
 		curr_club_dist = 2
 		terrain_dependant = false
 		switched_clubs.emit()
-		club_label.text = "iron"	
 	elif Input.is_action_just_pressed("wedge"):
 		curr_club_dist = 1
 		terrain_dependant = false
 		switched_clubs.emit()
-		club_label.text = "wedge"	
-		
+	$Club.text = curr_club_name().substr(0, 1).to_upper() + curr_club_name().substr(1)
+	
 func set_club(club : String):
 	if club=="driver":
 		curr_club_dist = 3
