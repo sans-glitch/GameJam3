@@ -1,0 +1,268 @@
+[gd_scene load_steps=8 format=3 uid="uid://dsq6k26yqoxvd"]
+
+[ext_resource type="Script" path="res://scripts/tutorial_2.gd" id="1_fbemm"]
+[ext_resource type="PackedScene" uid="uid://b4wyo3r4pu4ww" path="res://scenes/levels/level_2.tscn" id="2_lx6fa"]
+[ext_resource type="FontFile" uid="uid://d1nrnwyl78knh" path="res://resources/friend-info/Friend Info.otf" id="3_745u3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vef0a"]
+font = ExtResource("3_745u3")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ml7w"]
+font = ExtResource("3_745u3")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_tfee4"]
+font = ExtResource("3_745u3")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_8po75"]
+font = ExtResource("3_745u3")
+font_size = 40
+
+[node name="Tutorial2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fbemm")
+
+[node name="Level2" parent="." instance=ExtResource("2_lx6fa")]
+scale = Vector2(8, 8)
+
+[node name="1" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ClickHere" type="Label" parent="1"]
+layout_mode = 0
+offset_left = 385.0
+offset_top = 292.0
+offset_right = 513.0
+offset_bottom = 363.0
+text = "Click here!"
+label_settings = SubResource("LabelSettings_vef0a")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="1"]
+visible = false
+layout_mode = 0
+offset_left = 135.0
+offset_top = 542.0
+offset_right = 634.0
+offset_bottom = 584.0
+text = "[Press -> to advance]"
+label_settings = SubResource("LabelSettings_1ml7w")
+horizontal_alignment = 1
+
+[node name="2" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="2"]
+layout_mode = 0
+offset_left = -192.0
+offset_top = 1.0
+offset_right = 960.0
+offset_bottom = 640.0
+color = Color(0, 0, 0, 0.235294)
+
+[node name="Bunker" type="Label" parent="2"]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 365.0
+offset_right = 652.0
+offset_bottom = 632.0
+text = "Yellow tiles are sand traps. Currently you do not have the proper clubs to escape. Press 'r' to reset."
+label_settings = SubResource("LabelSettings_tfee4")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Advance" type="Label" parent="2"]
+visible = false
+layout_mode = 0
+offset_left = 427.0
+offset_top = 587.0
+offset_right = 926.0
+offset_bottom = 629.0
+text = "[<- / ->]"
+label_settings = SubResource("LabelSettings_8po75")
+horizontal_alignment = 1
+
+[node name="3" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ClickHere" type="Label" parent="3"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 25.0
+offset_right = 384.0
+offset_bottom = 96.0
+text = "Click here!"
+label_settings = SubResource("LabelSettings_vef0a")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Advance" type="Label" parent="3"]
+visible = false
+layout_mode = 0
+offset_left = 427.0
+offset_top = 587.0
+offset_right = 926.0
+offset_bottom = 629.0
+text = "[<- / ->]"
+label_settings = SubResource("LabelSettings_8po75")
+horizontal_alignment = 1
+
+[node name="4" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GrassLevels" type="Label" parent="4"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 343.0
+offset_right = 406.0
+offset_bottom = 525.0
+text = "Different levels of grass inhibit your range different amounts."
+label_settings = SubResource("LabelSettings_tfee4")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Green" type="Label" parent="4"]
+layout_mode = 0
+offset_left = 519.0
+offset_top = 288.0
+offset_right = 623.0
+offset_bottom = 375.0
+text = "Green -0"
+label_settings = SubResource("LabelSettings_tfee4")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Fairway" type="Label" parent="4"]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 406.0
+offset_right = 626.0
+offset_bottom = 493.0
+text = "Fairway
+-1"
+label_settings = SubResource("LabelSettings_tfee4")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Green2" type="Label" parent="4"]
+layout_mode = 0
+offset_left = 519.0
+offset_top = 528.0
+offset_right = 623.0
+offset_bottom = 615.0
+text = "Rough -2"
+label_settings = SubResource("LabelSettings_tfee4")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Advance" type="Label" parent="4"]
+layout_mode = 0
+offset_top = 565.0
+offset_right = 499.0
+offset_bottom = 607.0
+text = "[-> for a solution]"
+label_settings = SubResource("LabelSettings_8po75")
+horizontal_alignment = 1
+
+[node name="5" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Arrow" type="Label" parent="5"]
+layout_mode = 0
+offset_left = 479.0
+offset_top = 45.0
+offset_right = 533.0
+offset_bottom = 87.0
+text = "->"
+label_settings = SubResource("LabelSettings_tfee4")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Arrow2" type="Label" parent="5"]
+layout_mode = 0
+offset_left = 630.0
+offset_top = 99.0
+offset_right = 684.0
+offset_bottom = 141.0
+rotation = 0.640536
+text = "->"
+label_settings = SubResource("LabelSettings_tfee4")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Arrow3" type="Label" parent="5"]
+layout_mode = 0
+offset_left = 724.0
+offset_top = 227.0
+offset_right = 778.0
+offset_bottom = 269.0
+rotation = 1.5708
+text = "->"
+label_settings = SubResource("LabelSettings_tfee4")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Arrow4" type="Label" parent="5"]
+layout_mode = 0
+offset_left = 359.0
+offset_top = 45.0
+offset_right = 413.0
+offset_bottom = 87.0
+text = "->"
+label_settings = SubResource("LabelSettings_tfee4")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="6" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bunker" type="Label" parent="6"]
+layout_mode = 0
+offset_left = -13.0
+offset_top = 364.0
+offset_right = 391.0
+offset_bottom = 510.0
+text = "See if you can find a solution with fewer strokes than 5!"
+label_settings = SubResource("LabelSettings_tfee4")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Advance" type="Label" parent="6"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 577.0
+offset_right = 496.0
+offset_bottom = 619.0
+text = "[-> to hide text]"
+label_settings = SubResource("LabelSettings_8po75")
+horizontal_alignment = 1
+
+[node name="7" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
