@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2uegtojjn0fg"
-path="res://.godot/imported/putter.png-fa0d47d64528de59390ca77e5aa9da55.ctex"
+uid="uid://cwi6ce4nh5yog"
+path="res://.godot/imported/still d.png-bfd87fb5279721efe995967511b50f08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/putter.png"
-dest_files=["res://.godot/imported/putter.png-fa0d47d64528de59390ca77e5aa9da55.ctex"]
+source_file="res://assets/club buttons/still d.png"
+dest_files=["res://.godot/imported/still d.png-bfd87fb5279721efe995967511b50f08.ctex"]
 
 [params]
 

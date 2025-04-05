@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drwqi3xs6ouji"
-path="res://.godot/imported/iron.webp-dd4782e4e0571dbd620eaec8ee6bef37.ctex"
+uid="uid://dsmat513lgkkk"
+path="res://.godot/imported/still p.png-1c354fd4548b6117a582413291dbaabc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/iron.webp"
-dest_files=["res://.godot/imported/iron.webp-dd4782e4e0571dbd620eaec8ee6bef37.ctex"]
+source_file="res://assets/club buttons/still p.png"
+dest_files=["res://.godot/imported/still p.png-1c354fd4548b6117a582413291dbaabc.ctex"]
 
 [params]
 

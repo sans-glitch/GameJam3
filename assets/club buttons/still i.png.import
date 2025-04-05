@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbmgr5d5fh4bt"
-path="res://.godot/imported/wedge.webp-b93fd468881784483195b256126f8aab.ctex"
+uid="uid://di5mg07vqcyq2"
+path="res://.godot/imported/still i.png-a84fb8b173af5e351e9e3b240402916d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/wedge.webp"
-dest_files=["res://.godot/imported/wedge.webp-b93fd468881784483195b256126f8aab.ctex"]
+source_file="res://assets/club buttons/still i.png"
+dest_files=["res://.godot/imported/still i.png-a84fb8b173af5e351e9e3b240402916d.ctex"]
 
 [params]
 

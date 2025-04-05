@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dp78tnp6acym0"]
+[gd_scene load_steps=10 format=3 uid="uid://dp78tnp6acym0"]
 
-[ext_resource type="Script" path="res://scripts/inventory.gd" id="1_hj2ta"]
-[ext_resource type="Texture2D" uid="uid://bt1ev3otsy88j" path="res://assets/driver.png" id="1_qw0r6"]
-[ext_resource type="Texture2D" uid="uid://b2uegtojjn0fg" path="res://assets/putter.png" id="3_ty45s"]
-[ext_resource type="Texture2D" uid="uid://drwqi3xs6ouji" path="res://assets/iron.webp" id="4_53g1v"]
-[ext_resource type="Texture2D" uid="uid://dbmgr5d5fh4bt" path="res://assets/wedge.webp" id="5_yyk2a"]
+[ext_resource type="Script" uid="uid://cf8xeu5g88tbm" path="res://scripts/inventory.gd" id="1_hj2ta"]
+[ext_resource type="Texture2D" uid="uid://cwi6ce4nh5yog" path="res://assets/club buttons/still d.png" id="2_sr8g6"]
+[ext_resource type="Texture2D" uid="uid://c3lm5bxjlm8gj" path="res://assets/club buttons/hover d.png" id="3_p7iul"]
+[ext_resource type="Texture2D" uid="uid://dsmat513lgkkk" path="res://assets/club buttons/still p.png" id="4_td2ew"]
+[ext_resource type="Texture2D" uid="uid://cfualsyxh1udw" path="res://assets/club buttons/hover p.png" id="5_ylenm"]
+[ext_resource type="Texture2D" uid="uid://di5mg07vqcyq2" path="res://assets/club buttons/still i.png" id="6_0df5h"]
+[ext_resource type="Texture2D" uid="uid://b0wrxdwx1ofrw" path="res://assets/club buttons/hover i.png" id="7_fiysm"]
+[ext_resource type="Texture2D" uid="uid://c7kwfg2vsd2q0" path="res://assets/club buttons/still w.png" id="8_brsb2"]
+[ext_resource type="Texture2D" uid="uid://b65jiunw1l73b" path="res://assets/club buttons/hover w.png" id="9_nq6oc"]
 
 [node name="Inventory" type="Control"]
 visible = false
@@ -26,33 +30,41 @@ color = Color(0, 0, 0, 0.235294)
 offset_left = 44.0
 offset_top = 42.0
 offset_right = 60.0
-offset_bottom = 61.0
+offset_bottom = 58.0
 scale = Vector2(10, 10)
-texture_normal = ExtResource("1_qw0r6")
+texture_normal = ExtResource("2_sr8g6")
+texture_pressed = ExtResource("3_p7iul")
+texture_hover = ExtResource("3_p7iul")
 
 [node name="Putter" type="TextureButton" parent="CanvasLayer"]
 offset_left = 234.0
 offset_top = 43.0
 offset_right = 250.0
-offset_bottom = 62.0
+offset_bottom = 59.0
 scale = Vector2(10, 10)
-texture_normal = ExtResource("3_ty45s")
+texture_normal = ExtResource("4_td2ew")
+texture_pressed = ExtResource("5_ylenm")
+texture_hover = ExtResource("5_ylenm")
 
 [node name="Iron" type="TextureButton" parent="CanvasLayer"]
-offset_left = 46.0
-offset_top = 250.0
-offset_right = 1046.0
-offset_bottom = 1250.0
-scale = Vector2(0.149565, 0.1672)
-texture_normal = ExtResource("4_53g1v")
+offset_left = 44.0
+offset_top = 233.0
+offset_right = 216.0
+offset_bottom = 410.0
+scale = Vector2(10, 10)
+texture_normal = ExtResource("6_0df5h")
+texture_pressed = ExtResource("7_fiysm")
+texture_hover = ExtResource("7_fiysm")
 
 [node name="Wedge" type="TextureButton" parent="CanvasLayer"]
-offset_left = 237.0
-offset_top = 245.0
-offset_right = 1437.0
-offset_bottom = 1582.0
-scale = Vector2(0.12434, 0.132024)
-texture_normal = ExtResource("5_yyk2a")
+offset_left = 233.0
+offset_top = 233.0
+offset_right = 249.0
+offset_bottom = 249.0
+scale = Vector2(10, 10)
+texture_normal = ExtResource("8_brsb2")
+texture_pressed = ExtResource("9_nq6oc")
+texture_hover = ExtResource("9_nq6oc")
 
 [connection signal="pressed" from="CanvasLayer/Driver" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Putter" to="." method="_on_putter_pressed"]
