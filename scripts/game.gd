@@ -37,6 +37,10 @@ func _ready() -> void:
 	# Positions the golf ball
 	$GolfBall.position = Vector2(ball_pos) * tile_size * ui_scale
 	$Camera2D/ClubManager.switched_clubs.connect(_on_club_switched)
+	if LevelManager.curr_level == 1:
+		$Tutorial1.show()
+	elif LevelManager.curr_level == 2:
+		$Tutorial2.show()
 
 func _process(delta: float) -> void:
 	$GolfBall.position = Vector2(ball_pos) * tile_size * ui_scale
@@ -45,10 +49,15 @@ func _process(delta: float) -> void:
 	# If the ball is in the hole
 	if ball_pos == hole_pos:
 		AudioManager.play('res://assets/sounds/hole.wav')
+		if LevelManager.curr_level == 2 and strokes > 4:
+			soft_reset()
+			$Tutorial2.curr_slide_num = 6
+			$Tutorial2.show_slide(6)
+			return
 		LevelManager.increase_level_num()
 		get_tree().reload_current_scene()
 	# Updates stroke counter
-	$StrokeLabel.text = "Strokes: " + str(strokes)
+	$Camera2D/StrokeLabel.text = "Strokes: " + str(strokes)
 	
 	if $Course.get_tile_terrain_num(ball_pos) == 69:
 		await get_tree().create_timer(.5).timeout
@@ -94,10 +103,19 @@ func _on_club_switched():
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("reset"):
+		if LevelManager.curr_level == 2:
+			soft_reset()
+			return
 		get_tree().reload_current_scene()
 	if Input.is_action_just_pressed("ui_accept"):
 		LevelManager.increase_level_num()
 		get_tree().reload_current_scene()
+
+func soft_reset():
+	find_begin_and_end()
+	clear_shot_circle()
+	gen_shot_circle(get_shot_dist())
+	strokes = 0
 
 ## Fades out and deletes the current shot buttons
 func clear_shot_circle():
