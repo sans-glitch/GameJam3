@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://befwamj0fhftu" path="res://scripts/club_manager.gd" id="6_hrvwh"]
 [ext_resource type="Texture2D" uid="uid://bt1ev3otsy88j" path="res://assets/driver.png" id="6_khxi0"]
 [ext_resource type="Texture2D" path="res://assets/putter.png" id="7_suhnq"]
-[ext_resource type="PackedScene" uid="uid://bo2tax5rt6ywr" path="res://scenes/levels/level_1.tscn" id="8_pwax8"]
+[ext_resource type="PackedScene" uid="uid://bpqbxucdr1ta1" path="res://scenes/levels/level_15.tscn" id="8_trtic"]
 [ext_resource type="Texture2D" uid="uid://cys452j1jkh12" path="res://assets/flag copy.png" id="10_kvpfn"]
 [ext_resource type="FontFile" uid="uid://d1nrnwyl78knh" path="res://resources/friend-info/Friend Info.otf" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://dp78tnp6acym0" path="res://scenes/inventory.tscn" id="12_dinhu"]
@@ -73,7 +73,7 @@ horizontal_alignment = 2
 [node name="Course" parent="." groups=["Course"] instance=ExtResource("2_rg2s8")]
 scale = Vector2(8, 8)
 
-[node name="Level1" parent="Course" instance=ExtResource("8_pwax8")]
+[node name="level_15" parent="Course" instance=ExtResource("8_trtic")]
 
 [node name="GolfBall" type="Sprite2D" parent="."]
 z_index = 2

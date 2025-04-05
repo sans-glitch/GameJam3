@@ -2,9 +2,10 @@ extends Control
 
 @onready var club_manager: Node2D = $"../Camera2D/ClubManager"
 @onready var inventory: CanvasLayer = $CanvasLayer
+@onready var course: Node2D = $"../Course"
 
 func _ready() -> void:
-	#toggle_inv()
+	
 	pass
 
 func _input(event: InputEvent) -> void:
@@ -21,7 +22,10 @@ func toggle_inv():
 		inventory.show()
 		set_process(true)
 		set_process_unhandled_input(true)
-
+	
+	#code for what level goes here
+	#$CanvasLayer/Iron.hide()	
+	#$CanvasLayer/Wedge.hide()
 #driver
 func _on_texture_button_pressed() -> void:
 	club_manager.set_club("driver")

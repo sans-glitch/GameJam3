@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dp78tnp6acym0"]
+[gd_scene load_steps=11 format=3 uid="uid://dp78tnp6acym0"]
 
 [ext_resource type="Script" uid="uid://cf8xeu5g88tbm" path="res://scripts/inventory.gd" id="1_hj2ta"]
 [ext_resource type="Texture2D" uid="uid://cwi6ce4nh5yog" path="res://assets/club buttons/still d.png" id="2_sr8g6"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b0wrxdwx1ofrw" path="res://assets/club buttons/hover i.png" id="7_fiysm"]
 [ext_resource type="Texture2D" uid="uid://c7kwfg2vsd2q0" path="res://assets/club buttons/still w.png" id="8_brsb2"]
 [ext_resource type="Texture2D" uid="uid://b65jiunw1l73b" path="res://assets/club buttons/hover w.png" id="9_nq6oc"]
+[ext_resource type="Texture2D" uid="uid://b4qke8voj4wia" path="res://assets/golf-ball.png" id="10_p7iul"]
 
 [node name="Inventory" type="Control"]
 visible = false
@@ -65,6 +66,29 @@ scale = Vector2(10, 10)
 texture_normal = ExtResource("8_brsb2")
 texture_pressed = ExtResource("9_nq6oc")
 texture_hover = ExtResource("9_nq6oc")
+
+[node name="BallWhite" type="TextureButton" parent="CanvasLayer"]
+visible = false
+offset_left = 6.0
+offset_top = 400.0
+offset_right = 22.0
+offset_bottom = 416.0
+scale = Vector2(10, 10)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("10_p7iul")
+
+[node name="BallRed" type="TextureButton" parent="CanvasLayer"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("10_p7iul")
+
+[node name="BallGold" type="TextureButton" parent="CanvasLayer"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="pressed" from="CanvasLayer/Driver" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Putter" to="." method="_on_putter_pressed"]
