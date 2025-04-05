@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c5k7dauwom50e"]
+[gd_scene load_steps=16 format=3 uid="uid://c5k7dauwom50e"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_l80jb"]
 [ext_resource type="PackedScene" uid="uid://bhs3krwjvd635" path="res://scenes/dirt_particles.tscn" id="2_fsa2s"]
@@ -8,10 +8,12 @@
 [ext_resource type="Script" path="res://scripts/club_manager.gd" id="6_hrvwh"]
 [ext_resource type="Texture2D" uid="uid://bt1ev3otsy88j" path="res://assets/driver.png" id="6_khxi0"]
 [ext_resource type="Texture2D" uid="uid://b2uegtojjn0fg" path="res://assets/putter.png" id="7_suhnq"]
-[ext_resource type="PackedScene" uid="uid://bhnvvfy4e5ih2" path="res://scenes/levels/level_13.tscn" id="8_dinhu"]
+[ext_resource type="PackedScene" uid="uid://bo2tax5rt6ywr" path="res://scenes/levels/level_1.tscn" id="8_pwax8"]
 [ext_resource type="Texture2D" uid="uid://cys452j1jkh12" path="res://assets/flag copy.png" id="10_kvpfn"]
 [ext_resource type="FontFile" uid="uid://d1nrnwyl78knh" path="res://resources/friend-info/Friend Info.otf" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://dp78tnp6acym0" path="res://scenes/inventory.tscn" id="12_dinhu"]
+[ext_resource type="PackedScene" uid="uid://dn0aknuxk8xx6" path="res://scenes/levels/tutorial_1.tscn" id="13_uuutb"]
+[ext_resource type="PackedScene" uid="uid://dsq6k26yqoxvd" path="res://scenes/levels/tutorial_2.tscn" id="14_pb65x"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kl1hk"]
 font_size = 32
@@ -48,21 +50,30 @@ centered = false
 
 [node name="Club" type="Label" parent="Camera2D/ClubManager"]
 z_index = 2
-offset_left = 27.125
+offset_left = 2.0
 offset_top = 1.0
-offset_right = 260.125
-offset_bottom = 72.0
+offset_right = 235.0
+offset_bottom = 35.0
 scale = Vector2(0.133305, 0.127375)
 theme_override_fonts/font = ExtResource("11_kvpfn")
-text = "Club
-"
+text = "Driver"
+label_settings = SubResource("LabelSettings_kl1hk")
+
+[node name="StrokeLabel" type="Label" parent="Camera2D"]
+z_index = 1
+offset_left = 907.0
+offset_top = 10.0
+offset_right = 1140.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("11_kvpfn")
+text = "Strokes: 0"
 label_settings = SubResource("LabelSettings_kl1hk")
 horizontal_alignment = 2
 
 [node name="Course" parent="." groups=["Course"] instance=ExtResource("2_rg2s8")]
 scale = Vector2(8, 8)
 
-[node name="level_13" parent="Course" instance=ExtResource("8_dinhu")]
+[node name="Level1" parent="Course" instance=ExtResource("8_pwax8")]
 
 [node name="GolfBall" type="Sprite2D" parent="."]
 z_index = 2
@@ -83,16 +94,13 @@ texture = ExtResource("10_kvpfn")
 centered = false
 offset = Vector2(0, -3)
 
-[node name="StrokeLabel" type="Label" parent="."]
-offset_left = 399.0
-offset_top = 8.0
-offset_right = 632.0
-offset_bottom = 53.0
-theme_override_fonts/font = ExtResource("11_kvpfn")
-text = "Strokes: 0"
-label_settings = SubResource("LabelSettings_kl1hk")
-horizontal_alignment = 2
-
 [node name="Inventory" parent="." instance=ExtResource("12_dinhu")]
 offset_right = 1155.0
 offset_bottom = 643.0
+
+[node name="Tutorial1" parent="." instance=ExtResource("13_uuutb")]
+visible = false
+z_index = 10
+
+[node name="Tutorial2" parent="." instance=ExtResource("14_pb65x")]
+visible = false
