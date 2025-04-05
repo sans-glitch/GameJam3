@@ -9,12 +9,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if curr_slide_num > 2:
-		$Level1.hide()
-		$GolfBall.hide()
-	else:
-		$Level1.show()
-		$GolfBall.show()
+	pass
 
 func show_slide(num : int):
 	var children = get_children()
@@ -28,15 +23,19 @@ func show_slide(num : int):
 		selected_slide.show()
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_right") and curr_slide_num < 6:
+	pass
+	if Input.is_action_just_pressed("ui_right") and curr_slide_num < 7:
 		curr_slide_num += 1
 		show_slide(curr_slide_num)
 	if Input.is_action_just_pressed("ui_left") and curr_slide_num > 1:
 		curr_slide_num -= 1
 		show_slide(curr_slide_num)
-	if event is InputEventMouseButton and (curr_slide_num == 3 or curr_slide_num == 5):
+	if event is InputEventMouseButton and (curr_slide_num == 1 or curr_slide_num == 3):
 		curr_slide_num += 1
 		show_slide(curr_slide_num)
-	if Input.is_action_just_pressed("inventory") and curr_slide_num == 4:
+	if Input.is_action_just_pressed("reset") and curr_slide_num == 2:
 		curr_slide_num += 1
 		show_slide(curr_slide_num)
+	#if Input.is_action_just_pressed("inventory") and curr_slide_num == 4:
+		#curr_slide_num += 1
+		#show_slide(curr_slide_num)
