@@ -13,7 +13,8 @@ func get_curr_level_clubs():
 		return ["driver", "putter", "wedge", "iron"]
 
 func increase_level_num():
-	curr_level += 1
+	if curr_level < 18:
+		curr_level += 1
 
 func load_current_level():
 	var level_name = "res://scenes/levels/level_" + str(curr_level) + ".tscn"
