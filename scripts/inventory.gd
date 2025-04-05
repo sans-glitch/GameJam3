@@ -4,7 +4,8 @@ extends Control
 @onready var inventory: CanvasLayer = $CanvasLayer
 
 func _ready() -> void:
-	toggle_inv()
+	#toggle_inv()
+	pass
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("inventory"):
