@@ -1,11 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://dn0aknuxk8xx6"]
+[gd_scene load_steps=7 format=3 uid="uid://dn0aknuxk8xx6"]
 
 [ext_resource type="Script" path="res://scripts/tutorial_1.gd" id="1_2o4lu"]
 [ext_resource type="FontFile" uid="uid://d1nrnwyl78knh" path="res://resources/friend-info/Friend Info.otf" id="2_b1un8"]
+[ext_resource type="PackedScene" uid="uid://bo2tax5rt6ywr" path="res://scenes/levels/level_1.tscn" id="2_udlua"]
+[ext_resource type="Texture2D" uid="uid://b4qke8voj4wia" path="res://assets/golf-ball.png" id="3_iygqn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_edej7"]
 font = ExtResource("2_b1un8")
 font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_ixkpg"]
+font = ExtResource("2_b1un8")
+font_size = 32
 
 [node name="Tutorial1" type="Control"]
 layout_mode = 3
@@ -16,28 +22,41 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2o4lu")
 
-[node name="First" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Level1" parent="." instance=ExtResource("2_udlua")]
+scale = Vector2(8, 8)
 
-[node name="ColorRect" type="ColorRect" parent="First"]
+[node name="GolfBall" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(0, 232)
+scale = Vector2(8, 8)
+texture = ExtResource("3_iygqn")
+centered = false
+
+[node name="1" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = -264.0
+offset_top = -1.0
+offset_right = -224.0
+offset_bottom = 39.0
+
+[node name="ColorRect" type="ColorRect" parent="1"]
 layout_mode = 2
 offset_right = 1152.0
 offset_bottom = 639.0
 color = Color(0, 0, 0, 0.235294)
 
-[node name="Label" type="Label" parent="First"]
+[node name="Label" type="Label" parent="1"]
 layout_mode = 0
-offset_left = 321.0
-offset_top = 499.0
-offset_right = 820.0
-offset_bottom = 541.0
-text = "[Press space to advance]"
+offset_left = 335.0
+offset_top = 507.0
+offset_right = 834.0
+offset_bottom = 549.0
+text = "[Press -> to advance]"
 label_settings = SubResource("LabelSettings_edej7")
 horizontal_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="First"]
+[node name="RichTextLabel" type="RichTextLabel" parent="1"]
 layout_mode = 0
 offset_left = 197.0
 offset_top = 83.0
@@ -48,3 +67,201 @@ theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "Welcome to the [wave]Country Club [/wave]"
 fit_content = true
+
+[node name="2" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="2"]
+visible = false
+offset_right = 256.0
+offset_bottom = 639.0
+color = Color(0, 0, 0, 0.235294)
+
+[node name="ColorRect2" type="ColorRect" parent="2"]
+offset_left = 128.0
+offset_top = 1.0
+offset_right = 512.0
+offset_bottom = 640.0
+color = Color(0, 0, 0, 0.235294)
+
+[node name="ColorRect6" type="ColorRect" parent="2"]
+offset_left = 512.0
+offset_right = 640.0
+offset_bottom = 256.0
+color = Color(0, 0, 0, 0.235294)
+
+[node name="ColorRect3" type="ColorRect" parent="2"]
+offset_right = 128.0
+offset_bottom = 256.0
+color = Color(0, 0, 0, 0.235294)
+
+[node name="ColorRect4" type="ColorRect" parent="2"]
+offset_top = 384.0
+offset_right = 128.0
+offset_bottom = 640.0
+color = Color(0, 0, 0, 0.235294)
+
+[node name="ColorRect5" type="ColorRect" parent="2"]
+offset_left = -1022.0
+offset_top = 1.0
+offset_bottom = 640.0
+color = Color(0, 0, 0, 0.235294)
+
+[node name="ColorRect7" type="ColorRect" parent="2"]
+offset_left = 512.0
+offset_top = 384.0
+offset_right = 640.0
+offset_bottom = 640.0
+color = Color(0, 0, 0, 0.235294)
+
+[node name="ColorRect8" type="ColorRect" parent="2"]
+offset_left = 640.0
+offset_top = 1.0
+offset_right = 1024.0
+offset_bottom = 640.0
+color = Color(0, 0, 0, 0.235294)
+
+[node name="Advance" type="Label" parent="2"]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 506.0
+offset_right = 572.0
+offset_bottom = 548.0
+text = "[<- / ->]"
+label_settings = SubResource("LabelSettings_edej7")
+horizontal_alignment = 1
+
+[node name="Ball" type="Label" parent="2"]
+layout_mode = 0
+offset_left = -122.0
+offset_top = 183.0
+offset_right = 226.0
+offset_bottom = 225.0
+text = "This is your golf ball"
+label_settings = SubResource("LabelSettings_edej7")
+
+[node name="Label3" type="Label" parent="2"]
+offset_left = 461.0
+offset_top = 196.0
+offset_right = 809.0
+offset_bottom = 238.0
+text = "This is the hole"
+label_settings = SubResource("LabelSettings_edej7")
+
+[node name="3" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect8" type="ColorRect" parent="3"]
+offset_left = 640.0
+offset_top = 1.0
+offset_right = 1024.0
+offset_bottom = 640.0
+color = Color(0, 0, 0, 0.235294)
+
+[node name="ColorRect9" type="ColorRect" parent="3"]
+offset_left = -384.0
+offset_top = 1.0
+offset_bottom = 640.0
+color = Color(0, 0, 0, 0.235294)
+
+[node name="Advance" type="Label" parent="3"]
+visible = false
+offset_left = 73.0
+offset_top = 506.0
+offset_right = 572.0
+offset_bottom = 548.0
+text = "[<- / ->]"
+label_settings = SubResource("LabelSettings_edej7")
+horizontal_alignment = 1
+
+[node name="Hit" type="Label" parent="3"]
+offset_left = 139.0
+offset_top = 226.0
+offset_right = 335.0
+offset_bottom = 448.0
+text = "Highlighted tiles show where the ball can be hit"
+label_settings = SubResource("LabelSettings_edej7")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ClickHere" type="Label" parent="3"]
+offset_left = 386.0
+offset_top = 289.0
+offset_right = 514.0
+offset_bottom = 360.0
+text = "Click here!"
+label_settings = SubResource("LabelSettings_ixkpg")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="4" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Inventory" type="Label" parent="4"]
+offset_left = 112.0
+offset_top = 227.0
+offset_right = 308.0
+offset_bottom = 449.0
+text = "Press 'q' to open your inventory."
+label_settings = SubResource("LabelSettings_edej7")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Advance" type="Label" parent="4"]
+visible = false
+offset_left = 73.0
+offset_top = 506.0
+offset_right = 572.0
+offset_bottom = 548.0
+text = "[<- / ->]"
+label_settings = SubResource("LabelSettings_edej7")
+horizontal_alignment = 1
+
+[node name="5" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Select" type="Label" parent="5"]
+offset_left = 244.0
+offset_top = 180.0
+offset_right = 440.0
+offset_bottom = 492.0
+text = "Click on a club to select it or press its corresponding key."
+label_settings = SubResource("LabelSettings_edej7")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="6" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Putt" type="Label" parent="6"]
+offset_left = 426.0
+offset_top = 147.0
+offset_right = 622.0
+offset_bottom = 246.0
+text = "Make the putt!"
+label_settings = SubResource("LabelSettings_edej7")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Advance" type="Label" parent="6"]
+offset_left = 73.0
+offset_top = 506.0
+offset_right = 572.0
+offset_bottom = 548.0
+text = "[<- ]"
+label_settings = SubResource("LabelSettings_edej7")
+horizontal_alignment = 1
