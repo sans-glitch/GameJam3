@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dsq6k26yqoxvd"]
 
-[ext_resource type="Script" path="res://scripts/tutorial_2.gd" id="1_fbemm"]
+[ext_resource type="Script" uid="uid://bfjrar3p2fpbj" path="res://scripts/tutorial_2.gd" id="1_fbemm"]
 [ext_resource type="PackedScene" uid="uid://b4wyo3r4pu4ww" path="res://scenes/levels/level_2.tscn" id="2_lx6fa"]
 [ext_resource type="FontFile" uid="uid://d1nrnwyl78knh" path="res://resources/friend-info/Friend Info.otf" id="3_745u3"]
 
