@@ -53,3 +53,7 @@ func _on_iron_pressed() -> void:
 
 func _on_wedge_pressed() -> void:
 	club_manager.set_club("wedge")
+
+
+func _on_background_pressed() -> void:
+	inventory.hide()

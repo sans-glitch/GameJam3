@@ -26,6 +26,11 @@ offset_right = 1152.0
 offset_bottom = 644.0
 color = Color(0, 0, 0, 0.235294)
 
+[node name="Background" type="Button" parent="CanvasLayer"]
+offset_right = 1152.0
+offset_bottom = 640.0
+flat = true
+
 [node name="Driver" type="TextureButton" parent="CanvasLayer"]
 offset_left = 44.0
 offset_top = 42.0
@@ -89,6 +94,7 @@ visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
+[connection signal="button_down" from="CanvasLayer/Background" to="." method="_on_background_pressed"]
 [connection signal="pressed" from="CanvasLayer/Driver" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Putter" to="." method="_on_putter_pressed"]
 [connection signal="pressed" from="CanvasLayer/Iron" to="." method="_on_iron_pressed"]
