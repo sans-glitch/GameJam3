@@ -63,6 +63,8 @@ func _ready() -> void:
 		Dialogic.start("hole3")			
 	elif LevelManager.curr_level == 6:
 		Dialogic.start("unlockWedge")		
+	elif LevelManager.curr_level == 13:
+		Dialogic.start("unlockIron")		
 
 func _process(_delta: float) -> void:
 	$GolfBall.position = Vector2(ball_pos) * tile_size * ui_scale

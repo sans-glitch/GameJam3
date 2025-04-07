@@ -1,0 +1,20 @@
+join caddie center 
+caddie: Oh, he's getting angry now. 
+caddie: He didn't think you could do this well. 
+caddie: Don't worry, I believed in you this whole time...
+caddie: Mostly...
+leave caddie
+join opp center
+opp: You know what, kiddo? 
+opp: You're not gonna last much longer...
+opp: I just phoned a little friend from a town over...
+opp: He's bringing me my *Golden Iron Club.* 
+opp: You're done for. 
+leave opp
+[wait time="1.2"]
+join caddie center 
+caddie: Don't be scared of that club. 
+caddie: I think I have an iron for you too. 
+caddie: It's not gold or anything but it should do. 
+caddie: The iron is really strong since you can move three blocks from anywhere, even the sand traps!
+caddie: Alright, good luck!
