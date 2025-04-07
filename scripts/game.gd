@@ -1,14 +1,24 @@
 extends Node2D
 
+## A signal emitted whenever a shot has been selected
 signal shot_selected(coords : Vector2i)
+## Coordinates of the ball within the tilemap array
 var ball_pos : Vector2i
+## A reference to the club manager node which manages the clubs
 @onready var club_manager = $Camera2D/ClubManager
+## A reference to the course node which manages the tile map
 @onready var course: Node2D = $Course
+## Coordinates of the hole within the tilemap array
 var hole_pos : Vector2i
+## Number of strokes taken in current hole
 var strokes : int
+## Exported particle node
 @export var particles : PackedScene
+## Dirt particle node that will be an instance of particles
 var dirt_particles : CPUParticles2D
+## The size of each tile in pixels
 var tile_size : int
+## The scale that the tilemap and other ui is scaled to to fit the screen
 var ui_scale : Vector2
 var in_the_air : bool
 
@@ -43,7 +53,7 @@ func _ready() -> void:
 	elif LevelManager.curr_level == 2:
 		$Tutorial2.show()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$GolfBall.position = Vector2(ball_pos) * tile_size * ui_scale
 	if strokes == 0:
 		$GolfBall.position = (Vector2(ball_pos) * tile_size + Vector2(0,-3)) * ui_scale
@@ -65,7 +75,7 @@ func _process(delta: float) -> void:
 		get_tree().reload_current_scene()
 
 ## Signaled function that runs whenever a signal button is selected
-func _on_shot_selected(coords : Vector2i):
+func _on_shot_selected(coords : Vector2i) -> void:
 	strokes += 1
 	clear_shot_circle()
 	var land_sound = true
@@ -94,7 +104,6 @@ func _on_shot_selected(coords : Vector2i):
 	if land_sound:
 		AudioManager.play("res://assets/sounds/landing.wav")
 	
-	
 	if coords != hole_pos:
 		gen_shot_circle(get_shot_dist())
 
@@ -115,19 +124,22 @@ func _input(event: InputEvent) -> void:
 		LevelManager.curr_level -= 1
 		get_tree().reload_current_scene()
 
-func soft_reset():
+## Resets the stroke number and ball position without reloading the scene. 
+## Required for tutorial level 2.
+func soft_reset() -> void:
 	find_begin_and_end()
 	clear_shot_circle()
 	gen_shot_circle(get_shot_dist())
 	strokes = 0
 
 ## Fades out and deletes the current shot buttons
-func clear_shot_circle():
+func clear_shot_circle() -> void:
 	var tween = get_tree().create_tween().set_parallel()
 	var button_arr : Array
 	for child in get_children():
 		if child.is_in_group("SelectionTile") and not child.is_in_group("GettingCleared"):
 			child.add_to_group("GettingCleared")
+			child.disabled = true
 			button_arr.append(child)
 			tween.tween_property(
 				child,
@@ -240,9 +252,11 @@ func display_dirt(dir : Vector2):
 	dirt_particles.direction = dir
 	dirt_particles.restart()
 
+## Determines the proper ui scale based on the course size and centers the camera onto the course.
 func set_ui_scale():
-	var scale = min(get_viewport_rect().size.x/course.get_course_dimensions().x, get_viewport_rect().size.y/course.get_course_dimensions().y)
+	var course_dimensions = course.get_course_dimensions()
+	var scale = min(get_viewport_rect().size.x/course_dimensions.x, get_viewport_rect().size.y/course_dimensions.y)
 	ui_scale = Vector2(scale/tile_size, scale/tile_size)
-	$Camera2D.position.x = -(get_viewport_rect().size.x - (course.get_course_dimensions().x * ui_scale.x * tile_size))/2
-	$Camera2D.position.y = -(get_viewport_rect().size.y - (course.get_course_dimensions().y * ui_scale.y * tile_size))/2
+	$Camera2D.position.x = -(get_viewport_rect().size.x - (course_dimensions.x * ui_scale.x * tile_size))/2
+	$Camera2D.position.y = -(get_viewport_rect().size.y - (course_dimensions.y * ui_scale.y * tile_size))/2
 	
