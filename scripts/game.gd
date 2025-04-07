@@ -38,11 +38,13 @@ func _ready() -> void:
 	$GolfBall.position = Vector2(ball_pos) * tile_size * ui_scale
 	$Camera2D/ClubManager.switched_clubs.connect(_on_club_switched)
 	$Camera2D/HoleLabel.text = "Hole " + str(LevelManager.curr_level)
+	if $Camera2D/HoleLabel.text == "Hole 3":
+		Dialogic.start("hole3")	
 	if LevelManager.curr_level == 1:
+		Dialogic.start("start_game")	
 		$Tutorial1.show()
 	elif LevelManager.curr_level == 2:
 		$Tutorial2.show()
-	Dialogic.start("start_game")	
 
 func _process(delta: float) -> void:
 	$GolfBall.position = Vector2(ball_pos) * tile_size * ui_scale

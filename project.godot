@@ -29,8 +29,8 @@ directories/dch_directory={
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
-"start_game": "res://addons/timelines/start_game.dtl",
-"tutorial_timeline": "res://addons/timelines/tutorial_timeline.dtl"
+"hole3": "res://addons/timelines/hole3.dtl",
+"start_game": "res://addons/timelines/start_game.dtl"
 }
 layout/style_list=["res://addons/style3.tres"]
 layout/default_style="res://addons/style3.tres"
