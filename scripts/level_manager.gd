@@ -4,18 +4,17 @@ var curr_level = 1
 var furthest_unlocked_level
 #@onready var course: Node2D = 
 
-<<<<<<< Updated upstream
+
 ## Gets the clubs available to the player based on the level number.
 ## Returns an array containing each available club.
-func get_curr_level_clubs() -> Array[String]:
-=======
+
+
 func get_curr_level_par():
 	#TODO: not plus one yet, keep 14 to 13 as par 5
 	var par : Array = [0, 0, 0, 2, 3, 3, 3, 5, 2, 2, 5, 6, 4, 4, 5, 5, 3, 6, 4]
 	return par[curr_level]
 
 func get_curr_level_clubs():
->>>>>>> Stashed changes
 	if curr_level <= 5:
 		return ["driver", "putter"]
 	elif curr_level <= 12:
