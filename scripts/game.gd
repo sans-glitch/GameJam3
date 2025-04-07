@@ -64,6 +64,11 @@ func _process(delta: float) -> void:
 	if $Course.get_tile_terrain_num(ball_pos) == 69:
 		await get_tree().create_timer(.5).timeout
 		get_tree().reload_current_scene()
+	
+	if ($Camera2D/HoleLabel.text == "Hole 1" or $Camera2D/HoleLabel.text == "Hole 2") and $"Tutorial1/1/ColorRect".is_visible_in_tree()==false:
+		$Camera2D/Caddie.show()
+	else:
+		$Camera2D/Caddie.hide()
 
 ## Signaled function that runs whenever a signal button is selected
 func _on_shot_selected(coords : Vector2i):
