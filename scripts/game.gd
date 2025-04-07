@@ -24,6 +24,7 @@ var in_the_air : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Dialogic.signal_event.connect(_show_par_label)
 	tile_size = 16
 	ui_scale = Vector2(8, 8)
 	set_ui_scale()
@@ -48,8 +49,11 @@ func _ready() -> void:
 	$GolfBall.position = Vector2(ball_pos) * tile_size * ui_scale
 	$Camera2D/ClubManager.switched_clubs.connect(_on_club_switched)
 	$Camera2D/HoleLabel.text = "Hole " + str(LevelManager.curr_level)
+	$Camera2D/Par.text = "Par " + str(LevelManager.get_curr_level_par())
 	if $Camera2D/HoleLabel.text == "Hole 3":
 		Dialogic.start("hole3")	
+	if LevelManager.curr_level>3:
+		$Camera2D/Par.show()
 	if LevelManager.curr_level == 1:
 		Dialogic.start("start_game")	
 		$Tutorial1.show()
@@ -125,10 +129,10 @@ func _input(event: InputEvent) -> void:
 			soft_reset()
 			return
 		get_tree().reload_current_scene()
-	if Input.is_action_just_pressed("ui_page_up"):
+	if Input.is_action_just_pressed("ui_copy"):
 		LevelManager.increase_level_num()
 		get_tree().reload_current_scene()
-	if Input.is_action_just_pressed("ui_page_down"):
+	if Input.is_action_just_pressed("ui_paste"):
 		LevelManager.curr_level -= 1
 		get_tree().reload_current_scene()
 
@@ -268,3 +272,6 @@ func set_ui_scale():
 	$Camera2D.position.x = -(get_viewport_rect().size.x - (course_dimensions.x * ui_scale.x * tile_size))/2
 	$Camera2D.position.y = -(get_viewport_rect().size.y - (course_dimensions.y * ui_scale.y * tile_size))/2
 	
+func _show_par_label(argument:String):
+	if argument == "par_show":
+		$Camera2D/Par.show()
