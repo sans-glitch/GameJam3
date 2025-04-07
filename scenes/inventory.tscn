@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://b4qke8voj4wia" path="res://assets/golf-ball.png" id="10_p7iul"]
 
 [node name="Inventory" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
