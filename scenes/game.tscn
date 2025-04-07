@@ -55,6 +55,17 @@ text = "Strokes: 0"
 label_settings = SubResource("LabelSettings_kl1hk")
 horizontal_alignment = 2
 
+[node name="Par" type="Label" parent="Camera2D"]
+visible = false
+z_index = 1
+offset_left = 8.0
+offset_top = 587.0
+offset_right = 187.0
+offset_bottom = 632.0
+theme_override_fonts/font = ExtResource("11_kvpfn")
+text = "Hole 0"
+label_settings = SubResource("LabelSettings_kl1hk")
+
 [node name="HoleLabel" type="Label" parent="Camera2D"]
 z_index = 1
 offset_left = 907.0
@@ -80,6 +91,7 @@ stretch_mode = 4
 scale = Vector2(8, 8)
 
 [node name="level_15" parent="Course" instance=ExtResource("8_trtic")]
+visible = false
 
 [node name="GolfBall" type="Sprite2D" parent="."]
 z_index = 2
