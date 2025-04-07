@@ -1,6 +1,10 @@
-join caddie left
-caddie: Oh! You're finally here! Thank god. 
+join caddie center
+caddie: Oh! You're finally here! Thank god.
 caddie: *He's* been waiting for you...
-[wait time="1.0"]
-join opp left
+leave caddie
+join opp center
 opp: Hello, there.
+opp: I don't appreciate your tardiness.
+opp: I should have know someone of your... *caliber* would have no respect for my time.
+opp: Do you even know how to play?
+opp: You don't? Well, let your little caddie explain it to you then.
