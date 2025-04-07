@@ -48,7 +48,10 @@ func _ready() -> void:
 	$GolfBall.position = Vector2(ball_pos) * tile_size * ui_scale
 	$Camera2D/ClubManager.switched_clubs.connect(_on_club_switched)
 	$Camera2D/HoleLabel.text = "Hole " + str(LevelManager.curr_level)
+	if $Camera2D/HoleLabel.text == "Hole 3":
+		Dialogic.start("hole3")	
 	if LevelManager.curr_level == 1:
+		Dialogic.start("start_game")	
 		$Tutorial1.show()
 	elif LevelManager.curr_level == 2:
 		$Tutorial2.show()
@@ -73,6 +76,11 @@ func _process(_delta: float) -> void:
 	if $Course.get_tile_terrain_num(ball_pos) == 69:
 		await get_tree().create_timer(.5).timeout
 		get_tree().reload_current_scene()
+	
+	if ($Camera2D/HoleLabel.text == "Hole 1" or $Camera2D/HoleLabel.text == "Hole 2") and $"Tutorial1/1/ColorRect".is_visible_in_tree()==false:
+		$Camera2D/Caddie.show()
+	else:
+		$Camera2D/Caddie.hide()
 
 ## Signaled function that runs whenever a signal button is selected
 func _on_shot_selected(coords : Vector2i) -> void:

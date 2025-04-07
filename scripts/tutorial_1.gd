@@ -4,7 +4,7 @@ var curr_slide_num
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	curr_slide_num = 1
-	show_slide(1)
+	show_slide(1)	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,6 +26,7 @@ func show_slide(num : int):
 	var selected_slide = get_node(path_string)
 	if selected_slide:
 		selected_slide.show()
+		
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_right") and curr_slide_num < 6:
