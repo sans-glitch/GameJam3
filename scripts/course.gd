@@ -21,15 +21,22 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+## Gets the amount a specific tile inhibits the club range.
+## [param coords] is the specific tile's position in the tile map array.
 func get_tile_terrain_num(coords : Vector2i) -> int:
 	return tile_map.get_cell_tile_data(coords).get_custom_data("Terrain")
 
+## Determines if the specific tile is the starting tile (tee).
+## [param coords] is the specific tile's position in the tile map array.
 func is_tile_beginning(coords : Vector2i) -> bool:
 	return tile_map.get_cell_tile_data(coords).get_custom_data("Begin")
 	
+## Determines if the specific tile is the ending tile (hole).
+## [param coords] is the specific tile's position in the tile map array.
 func is_tile_end(coords : Vector2i) -> bool:
 	return tile_map.get_cell_tile_data(coords).get_custom_data("End")
 
-func get_course_dimensions():
+## Returns the size of the tile map's [method TileMapLayer.get_used_rect]
+func get_course_dimensions() -> Vector2i:
 	var map_rect = tile_map.get_used_rect()
 	return map_rect.size

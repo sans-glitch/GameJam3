@@ -27,12 +27,13 @@ func _on_stream_finished(stream):
 	# When finished playing a stream, make the player available again.
 	available.append(stream)
 
-
-func play(sound_path):
+## Queues and plays a sound file.
+## [param sound_path] is the path of the desired sound file 
+func play(sound_path : String):
 	queue.append(sound_path)
 
 
-func _process(delta):
+func _process(_delta):
 	# Play a queued sound if any players are available.
 	if not queue.is_empty() and not available.is_empty():
 		available[0].stream = load(queue.pop_front())
