@@ -50,8 +50,6 @@ func _ready() -> void:
 	$Camera2D/ClubManager.switched_clubs.connect(_on_club_switched)
 	$Camera2D/HoleLabel.text = "Hole " + str(LevelManager.curr_level)
 	$Camera2D/Par.text = "Par " + str(LevelManager.get_curr_level_par())
-	if $Camera2D/HoleLabel.text == "Hole 3":
-		Dialogic.start("hole3")	
 	if LevelManager.curr_level>3:
 		$Camera2D/Par.show()
 	if LevelManager.curr_level == 1:
@@ -59,6 +57,12 @@ func _ready() -> void:
 		$Tutorial1.show()
 	elif LevelManager.curr_level == 2:
 		$Tutorial2.show()
+		
+	##DIALOGUE STUFF
+	if LevelManager.curr_level == 3:
+		Dialogic.start("hole3")			
+	elif LevelManager.curr_level == 6:
+		Dialogic.start("unlockWedge")		
 
 func _process(_delta: float) -> void:
 	$GolfBall.position = Vector2(ball_pos) * tile_size * ui_scale

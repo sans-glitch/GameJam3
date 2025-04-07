@@ -30,7 +30,8 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "hole3": "res://addons/timelines/hole3.dtl",
-"start_game": "res://addons/timelines/start_game.dtl"
+"start_game": "res://addons/timelines/start_game.dtl",
+"unlockWedge": "res://addons/timelines/unlockWedge.dtl"
 }
 layout/style_list=["res://addons/style3.tres"]
 layout/default_style="res://addons/style3.tres"

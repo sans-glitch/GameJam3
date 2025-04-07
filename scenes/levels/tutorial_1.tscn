@@ -42,8 +42,8 @@ offset_bottom = 39.0
 
 [node name="ColorRect" type="ColorRect" parent="1"]
 layout_mode = 2
-offset_right = 1152.0
-offset_bottom = 639.0
+offset_right = 1471.0
+offset_bottom = 784.0
 color = Color(0, 0, 0, 0.235294)
 
 [node name="Label" type="Label" parent="1"]

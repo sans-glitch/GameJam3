@@ -79,7 +79,7 @@ horizontal_alignment = 2
 
 [node name="Caddie" type="TextureRect" parent="Camera2D"]
 visible = false
-z_index = 2
+z_index = 4
 offset_left = 8.0
 offset_top = 406.0
 offset_right = 242.0

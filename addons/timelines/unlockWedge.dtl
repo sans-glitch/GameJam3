@@ -1,0 +1,13 @@
+join caddie center 
+caddie: Look at you! You're doing great!
+caddie: I think for these next levels, you're going to need a new club...
+caddie: Good thing I have just what you need. 
+caddie: The wedge. 
+caddie: Check it out in your inventory! 
+caddie: The wedge lets you putt from anywhere, even the sand!
+leave caddie
+join opp center
+opp: Well. 
+opp: Looks like you're doing better than I thought. 
+opp: No worries, I will beat you, anyhow. 
+leave opp 
