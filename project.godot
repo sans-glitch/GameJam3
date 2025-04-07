@@ -31,6 +31,8 @@ directories/dch_directory={
 directories/dtl_directory={
 "start_game": "res://addons/timelines/start_game.dtl"
 }
+layout/style_list=["res://addons/style.tres"]
+layout/default_style="res://addons/style.tres"
 
 [display]
 

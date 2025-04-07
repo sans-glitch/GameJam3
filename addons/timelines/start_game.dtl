@@ -1,5 +1,6 @@
-[wait time="2.0" skippable="true"]
-join caddie center
+join caddie left
 caddie: Oh! You're finally here! Thank god. 
 caddie: *He's* been waiting for you...
-join opp center
+[wait time="1.0"]
+join opp left
+opp: Hello, there.

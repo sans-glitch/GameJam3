@@ -6,7 +6,7 @@
 &"custom_info": {
 "sound_mood_default": "",
 "sound_moods": {},
-"style": ""
+"style": "style"
 },
 &"default_portrait": "normal",
 &"description": "",
@@ -17,11 +17,11 @@
 &"portraits": {
 "normal": {
 "export_overrides": {
-"image": "\"res://assets/flag.png\""
+"image": "\"res://assets/caddie.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
-"scale": 1,
+"scale": 1.0,
 "scene": ""
 }
 },
