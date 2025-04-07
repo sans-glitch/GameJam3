@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 func show_slide(num : int):
 	var children = get_children()
 	for child in children:
-		if child is Control:
+		if child is CanvasLayer or child is Control:
 			child.hide()
 	
 	var path_string = str(num)
