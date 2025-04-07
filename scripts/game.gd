@@ -42,6 +42,7 @@ func _ready() -> void:
 		$Tutorial1.show()
 	elif LevelManager.curr_level == 2:
 		$Tutorial2.show()
+	Dialogic.start("start_game")	
 
 func _process(delta: float) -> void:
 	$GolfBall.position = Vector2(ball_pos) * tile_size * ui_scale
