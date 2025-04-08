@@ -340,6 +340,7 @@ func ball_in_hole():
 		return
 	var par = LevelManager.get_curr_level_par()
 	if par != 0 and strokes > par: # Over par
+		play_random_taunt()
 		soft_reset(false)
 		return
 	#Advance level
@@ -347,3 +348,6 @@ func ball_in_hole():
 	if LevelManager.curr_level == 19:
 		return
 	soft_reset(true)
+	
+func play_random_taunt():
+	Dialogic.start("taunt_"+str(randi_range(1,3)))
