@@ -42,7 +42,7 @@ func increase_level_num():
 		Dialogic.start("win_game")
 		Stopwatch.stopped = true
 		
-		
+
 func load_current_level():
 	var level_name = "res://scenes/levels/level_" + str(curr_level) + ".tscn"
 	var level = load(level_name)

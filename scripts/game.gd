@@ -24,76 +24,17 @@ var in_the_air : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Dialogic.signal_event.connect(_show_par_label)
-	Dialogic.signal_event.connect(_show_red_ball)
-	Dialogic.signal_event.connect(_show_gold_ball)
-	Dialogic.signal_event.connect(_show_glove)
-	Dialogic.signal_event.connect(_show_hat)
-	tile_size = 16
-	ui_scale = Vector2(8, 8)
-	set_ui_scale()
-	$Course.scale = ui_scale
-	$GolfBall.scale = ui_scale
-	
-	$Flag.position = Vector2(hole_pos) * tile_size * ui_scale
-	$GolfBall.position = Vector2(ball_pos) * tile_size * ui_scale
-	$Camera2D/ClubManager.switched_clubs.connect(_on_club_switched)
-	$Camera2D/HoleLabel.text = "Hole " + str(LevelManager.curr_level)
-	$Camera2D/Par.text = "Par " + str(LevelManager.get_curr_level_par())
-	$Camera2D/Stopwatch.text = Stopwatch.get_time_string()
-	if LevelManager.curr_level > 3:
-		$Camera2D/Par.show()
-	if LevelManager.curr_level == 1:
-		$Tutorial1.show()
-	elif LevelManager.curr_level == 2:
-		$Tutorial2.show()
+	print("reset")
+	Dialogic.signal_event.connect(_show_gui_element)
 	shot_selected.connect(_on_shot_selected)
-	find_begin_and_end()
-	# Generates the first shot selection buttons
-	gen_shot_circle(get_shot_dist())
 	# Sets up dirt particle node
 	dirt_particles = particles.instantiate()
 	dirt_particles.scale *= ui_scale
 	dirt_particles.scale_amount_min *= ui_scale.x/3
 	dirt_particles.scale_amount_max *= ui_scale.x/3
 	add_child(dirt_particles)
+	new_level_actions(true)
 	
-	# Positions the golf ball
-	
-	
-	# Setting wind
-	if LevelManager.get_curr_level_wind().length() > 0:
-		var direction = LevelManager.get_curr_level_wind()
-		$Camera2D/GPUParticles2D.show()
-		$Camera2D/GPUParticles2D.process_material.set_direction(Vector3(direction.x, direction.y, 0))
-	
-	#DIALOGUE STUFF
-	#if LevelManager.curr_level == 1:
-		#Dialogic.start("start_game")
-	#elif LevelManager.curr_level == 3:
-		#Dialogic.start("hole3")
-	if LevelManager.curr_level == 5:
-		Dialogic.start("red_ball")	
-	#elif LevelManager.curr_level == 6:
-		#Dialogic.start("unlockWedge")
-	#elif LevelManager.curr_level == 8:
-		#Dialogic.start("glove")	
-	#elif LevelManager.curr_level == 9:
-		#Dialogic.start("win")	
-	#elif LevelManager.curr_level == 12:
-		#Dialogic.start("unlockIron")	
-	#elif LevelManager.curr_level == 13:
-		#Dialogic.start("sunny")	
-		#$Camera2D/Sun.show()
-	#elif LevelManager.curr_level == 14:
-		#Dialogic.start("sun_hat")
-		#$Camera2D/Sun.show()
-	#elif LevelManager.curr_level == 16:
-		#Dialogic.start("gold_ball")		
-	#elif LevelManager.curr_level == 18:
-		#Dialogic.start("broken_driver")	
-	
-		
 
 func _process(_delta: float) -> void:
 	$GolfBall.position = Vector2(ball_pos) * tile_size * ui_scale
@@ -101,27 +42,15 @@ func _process(_delta: float) -> void:
 		$GolfBall.position = (Vector2(ball_pos) * tile_size + Vector2(0,-3)) * ui_scale
 	
 	# If the ball is in the hole
-	if ball_pos == hole_pos:
-		AudioManager.play('res://assets/sounds/hole.wav')
-		if LevelManager.curr_level == 2 and strokes > 4:
-			soft_reset()
-			$Tutorial2.curr_slide_num = 6
-			$Tutorial2.show_slide(6)
-			return
-		var par = LevelManager.get_curr_level_par()
-		if par != 0 and strokes > par:
-			soft_reset()
-			return
-		LevelManager.increase_level_num()
-		if LevelManager.curr_level < 19:
-			get_tree().reload_current_scene()
+	#if ball_pos == hole_pos:
+		
 	# Updates stroke counter
 	$Camera2D/StrokeLabel.text = "Strokes: " + str(strokes)
 	$Camera2D/Stopwatch.text = Stopwatch.get_time_string()
 	
 	if $Course.get_tile_terrain_num(ball_pos) == 69:
 		await get_tree().create_timer(.5).timeout
-		soft_reset()
+		soft_reset(false)
 	
 	if ($Camera2D/HoleLabel.text == "Hole 1" or $Camera2D/HoleLabel.text == "Hole 2") and $"Tutorial1/1/ColorRect".is_visible_in_tree()==false:
 		$Camera2D/Caddie.show()
@@ -151,7 +80,8 @@ func _on_shot_selected(coords : Vector2i) -> void:
 	elif club_name == "iron":
 		AudioManager.play('res://assets/sounds/swing_hit.wav')
 		await animate_high_shot(coords)
-	
+	#if strokes == 0:
+		#soft_reset()
 	ball_pos = coords
 	if $Course.get_tile_terrain_num(ball_pos) == 69:
 		AudioManager.play("res://assets/sounds/small_splash.wav")
@@ -162,18 +92,20 @@ func _on_shot_selected(coords : Vector2i) -> void:
 	
 	if coords != hole_pos:
 		gen_shot_circle(get_shot_dist())
+	else:
+		ball_in_hole()
 
 func _on_club_switched():
 	clear_shot_circle()
 	gen_shot_circle(get_shot_dist())
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("reset"):
+	if Input.is_action_just_pressed("reset") and not in_the_air:
 		#if LevelManager.curr_level == 2:
 			#soft_reset()
 			#return
 		#get_tree().reload_current_scene()
-		soft_reset()
+		soft_reset(false)
 	if Input.is_action_just_pressed("ui_copy"):
 		LevelManager.increase_level_num()
 		get_tree().reload_current_scene()
@@ -183,11 +115,12 @@ func _input(event: InputEvent) -> void:
 
 ## Resets the stroke number and ball position without reloading the scene. 
 ## Required for tutorial level 2.
-func soft_reset() -> void:
+func soft_reset(update_dialogue : bool) -> void:
 	find_begin_and_end()
 	clear_shot_circle()
 	gen_shot_circle(get_shot_dist())
 	strokes = 0
+	new_level_actions(update_dialogue)
 
 ## Fades out and deletes the current shot buttons
 func clear_shot_circle() -> void:
@@ -316,23 +249,97 @@ func set_ui_scale():
 	ui_scale = Vector2(scale/tile_size, scale/tile_size)
 	$Camera2D.position.x = -(get_viewport_rect().size.x - (course_dimensions.x * ui_scale.x * tile_size))/2
 	$Camera2D.position.y = -(get_viewport_rect().size.y - (course_dimensions.y * ui_scale.y * tile_size))/2
+
+func _show_gui_element(argument : String) -> void:
+	match argument:
+		"par_show":
+			$Camera2D/Par.show()
+		"red_ball":
+			$Inventory.show_red_ball()
+		"gold_ball":
+			$Inventory.show_gold_ball()
+		"sunhat":
+			$Inventory.show_hat()
+		"glove":
+			$Inventory.show_glove()
+
+func reset_gui():
+	tile_size = 16
+	ui_scale = Vector2(8, 8)
+	set_ui_scale()
+	$Course.scale = ui_scale
+	$GolfBall.scale = ui_scale
 	
-func _show_par_label(argument:String):
-	if argument == "par_show":
-		$Camera2D/Par.show()				
-
-func _show_red_ball(argument:String):
-	if argument == "red_ball":
-		$Inventory.show_red_ball()		
-
-func _show_gold_ball(argument:String):
-	if argument == "gold_ball":
-		$Inventory.show_gold_ball()	
+	$Flag.position = Vector2(hole_pos) * tile_size * ui_scale
+	$GolfBall.position = Vector2(ball_pos) * tile_size * ui_scale
+	$Camera2D/ClubManager.switched_clubs.connect(_on_club_switched)
+	$Camera2D/HoleLabel.text = "Hole " + str(LevelManager.curr_level)
+	$Camera2D/Par.text = "Par " + str(LevelManager.get_curr_level_par())
+	$Camera2D/Stopwatch.text = Stopwatch.get_time_string()
+	
+	$Camera2D/Par.hide()
+	$Tutorial1.hide()
+	$Tutorial2.hide()
+	if LevelManager.curr_level > 3:
+		$Camera2D/Par.show()
+	if LevelManager.curr_level == 1:
+		$Tutorial1.show()
+	elif LevelManager.curr_level == 2:
+		$Tutorial2.show()
+	# Displays wind if needed
+	if LevelManager.get_curr_level_wind().length() > 0:
+		var direction = LevelManager.get_curr_level_wind()
+		$Camera2D/GPUParticles2D.show()
+		$Camera2D/GPUParticles2D.process_material.set_direction(Vector3(direction.x, direction.y, 0))
 		
-func _show_hat(argument:String):
-	if argument == "sunhat":
-		$Inventory.show_hat()
-		
-func _show_glove(argument:String):
-	if argument == "glove":
-		$Inventory.show_glove()
+func display_dialogue():
+	match LevelManager.curr_level:
+		1:
+			Dialogic.start("start_game")
+		3:
+			Dialogic.start("hole3")
+		5:
+			Dialogic.start("red_ball")
+		6:
+			Dialogic.start("unlockWedge")
+		8:
+			Dialogic.start("glove")
+		9:
+			Dialogic.start("win")
+		12:
+			Dialogic.start("unlockIron")
+		13:
+			Dialogic.start("sunny")
+		14:
+			Dialogic.start("sun_hat")
+		16:
+			Dialogic.start("gold_ball")
+		18:
+			Dialogic.start("broken_driver")
+
+func new_level_actions(update_dialogue : bool):
+	#LevelManager.load_current_level()
+	$Course._ready()
+	reset_gui()
+	find_begin_and_end()
+	club_manager.set_club(LevelManager.get_curr_level_clubs()[0])
+	# Generates the first shot selection buttons
+	gen_shot_circle(get_shot_dist())
+	display_dialogue()
+
+func ball_in_hole():
+	AudioManager.play('res://assets/sounds/hole.wav')
+	if LevelManager.curr_level == 2 and strokes > 4:
+		soft_reset(false)
+		$Tutorial2.curr_slide_num = 6
+		$Tutorial2.show_slide(6)
+		return
+	var par = LevelManager.get_curr_level_par()
+	if par != 0 and strokes > par: # Over par
+		soft_reset(false)
+		return
+	#Advance level
+	LevelManager.increase_level_num()
+	if LevelManager.curr_level == 19:
+		return
+	soft_reset(true)

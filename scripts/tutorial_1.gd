@@ -26,9 +26,11 @@ func show_slide(num : int):
 	var selected_slide = get_node(path_string)
 	if selected_slide:
 		selected_slide.show()
-		
+
 
 func _input(event: InputEvent) -> void:
+	if not visible:
+		return
 	if Input.is_action_just_pressed("ui_right") and curr_slide_num < 6:
 		curr_slide_num += 1
 		show_slide(curr_slide_num)

@@ -23,7 +23,8 @@ func show_slide(num : int):
 		selected_slide.show()
 
 func _input(event: InputEvent) -> void:
-	pass
+	if not visible:
+		return
 	if Input.is_action_just_pressed("ui_right") and curr_slide_num < 7:
 		curr_slide_num += 1
 		show_slide(curr_slide_num)

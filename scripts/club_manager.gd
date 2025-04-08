@@ -9,7 +9,7 @@ signal switched_clubs
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#curr_club_dist = 3
-	set_club(LevelManager.get_curr_level_clubs()[0])
+	pass
 	#terrain_dependant = true
 	
 
