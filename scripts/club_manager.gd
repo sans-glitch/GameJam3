@@ -8,6 +8,7 @@ signal switched_clubs
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	curr_club_dist = 3
 	terrain_dependant = true
 	
