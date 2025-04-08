@@ -23,6 +23,18 @@ func _ready() -> void:
 		$CanvasLayer/Wedge.hide()
 	
 
+func show_red_ball():
+	$CanvasLayer/BallRed.show()
+	
+func show_gold_ball():
+	$CanvasLayer/BallGold.show()
+	
+func show_glove():
+	$CanvasLayer/Glove.show()
+	
+func show_hat():
+	$CanvasLayer/Hat.show()			
+
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("inventory"):
 		toggle_inv()

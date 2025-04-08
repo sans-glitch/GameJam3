@@ -25,6 +25,10 @@ var in_the_air : bool
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Dialogic.signal_event.connect(_show_par_label)
+	Dialogic.signal_event.connect(_show_red_ball)
+	Dialogic.signal_event.connect(_show_gold_ball)
+	Dialogic.signal_event.connect(_show_glove)
+	Dialogic.signal_event.connect(_show_hat)
 	tile_size = 16
 	ui_scale = Vector2(8, 8)
 	set_ui_scale()
@@ -68,6 +72,8 @@ func _ready() -> void:
 		#Dialogic.start("start_game")
 	#elif LevelManager.curr_level == 3:
 		#Dialogic.start("hole3")
+	#elif LevelManager.curr_level == 5:
+		#Dialogic.start("red_ball")	
 	#elif LevelManager.curr_level == 6:
 		#Dialogic.start("unlockWedge")
 	#elif LevelManager.curr_level == 12:
@@ -301,20 +307,20 @@ func set_ui_scale():
 	
 func _show_par_label(argument:String):
 	if argument == "par_show":
-		$Camera2D/Par.show()		
+		$Camera2D/Par.show()				
 
 func _show_red_ball(argument:String):
 	if argument == "red_ball":
-		$Inventory/CanvasLayer/BallRed.show()			
+		$Inventory.show_red_ball()		
 
 func _show_gold_ball(argument:String):
 	if argument == "gold_ball":
-		$Inventory/CanvasLayer/BallGold.show()
+		$Inventory.show_gold_ball()	
 		
 func _show_hat(argument:String):
 	if argument == "sunhat":
-		$Inventory/CanvasLayer/BallGold.show()
+		$Inventory.show_hat()
 		
 func _show_glove(argument:String):
 	if argument == "glove":
-		$Inventory/CanvasLayer/BallGold.show()				
+		$Inventory.show_glove()
