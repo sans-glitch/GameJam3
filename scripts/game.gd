@@ -31,12 +31,8 @@ func _ready() -> void:
 	$Course.scale = ui_scale
 	$GolfBall.scale = ui_scale
 	shot_selected.connect(_on_shot_selected)
-	# Centers Camera on course
-	#$Camera2D.position.x = -((9 -$Course.tile_array[0].size()) * ui_scale.x * tile_size)/2
-	# Determines the starting and hole tile coordinates
 	find_begin_and_end()
 	$Flag.position = Vector2(hole_pos) * tile_size * ui_scale
-	#curr_club_dist = 3
 	# Generates the first shot selection buttons
 	gen_shot_circle(get_shot_dist())
 	# Sets up dirt particle node
@@ -50,26 +46,34 @@ func _ready() -> void:
 	$Camera2D/ClubManager.switched_clubs.connect(_on_club_switched)
 	$Camera2D/HoleLabel.text = "Hole " + str(LevelManager.curr_level)
 	$Camera2D/Par.text = "Par " + str(LevelManager.get_curr_level_par())
-	if LevelManager.curr_level>3:
+	if LevelManager.curr_level > 3:
 		$Camera2D/Par.show()
 	if LevelManager.curr_level == 1:
 		Dialogic.start("start_game")	
 		$Tutorial1.show()
 	elif LevelManager.curr_level == 2:
 		$Tutorial2.show()
-		
+	
+	# Setting wind
+	if LevelManager.get_curr_level_wind().length() > 0:
+		var direction = LevelManager.get_curr_level_wind()
+		$Camera2D/GPUParticles2D.show()
+		$Camera2D/GPUParticles2D.process_material.set_direction(Vector3(direction.x, direction.y, 0))
+	
 	##DIALOGUE STUFF
 	if LevelManager.curr_level == 3:
-		Dialogic.start("hole3")			
+		Dialogic.start("hole3")
 	elif LevelManager.curr_level == 6:
-		Dialogic.start("unlockWedge")		
+		Dialogic.start("unlockWedge")
 	elif LevelManager.curr_level == 13:
-		Dialogic.start("unlockIron")			
+		Dialogic.start("unlockIron")
+		
 
 func _process(_delta: float) -> void:
 	$GolfBall.position = Vector2(ball_pos) * tile_size * ui_scale
 	if strokes == 0:
 		$GolfBall.position = (Vector2(ball_pos) * tile_size + Vector2(0,-3)) * ui_scale
+	
 	# If the ball is in the hole
 	if ball_pos == hole_pos:
 		AudioManager.play('res://assets/sounds/hole.wav')
@@ -78,10 +82,14 @@ func _process(_delta: float) -> void:
 			$Tutorial2.curr_slide_num = 6
 			$Tutorial2.show_slide(6)
 			return
+		if strokes < LevelManager.get_curr_level_par():
+			soft_reset()
+			return
 		LevelManager.increase_level_num()
 		get_tree().reload_current_scene()
 	# Updates stroke counter
 	$Camera2D/StrokeLabel.text = "Strokes: " + str(strokes)
+	$Camera2D/Stopwatch.text = Stopwatch.get_time_string()
 	
 	if $Course.get_tile_terrain_num(ball_pos) == 69:
 		await get_tree().create_timer(.5).timeout
@@ -131,10 +139,11 @@ func _on_club_switched():
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("reset"):
-		if LevelManager.curr_level == 2:
-			soft_reset()
-			return
-		get_tree().reload_current_scene()
+		#if LevelManager.curr_level == 2:
+			#soft_reset()
+			#return
+		#get_tree().reload_current_scene()
+		soft_reset()
 	if Input.is_action_just_pressed("ui_copy"):
 		LevelManager.increase_level_num()
 		get_tree().reload_current_scene()
@@ -172,9 +181,10 @@ func clear_shot_circle() -> void:
 
 ## Instantiates and places shot select buttons on tile grid
 func gen_shot_circle(rad : int):
+	var wind = LevelManager.get_curr_level_wind()
 	for row in $Course.tile_array.size():
 		for col in $Course.tile_array[0].size():
-			var dist = ball_pos.distance_to(Vector2i(col, row))
+			var dist = (ball_pos + wind).distance_to(Vector2i(col, row))
 			if abs(rad - dist) < 0.5:
 				add_child(SelectionTile.new_button(Vector2i(col, row), ui_scale, tile_size))
 

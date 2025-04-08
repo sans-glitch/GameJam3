@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c5k7dauwom50e"]
+[gd_scene load_steps=22 format=3 uid="uid://c5k7dauwom50e"]
 
 [ext_resource type="Script" uid="uid://bs8ngbl2jtp40" path="res://scripts/game.gd" id="1_l80jb"]
 [ext_resource type="PackedScene" uid="uid://bhs3krwjvd635" path="res://scenes/dirt_particles.tscn" id="2_fsa2s"]
@@ -16,6 +16,46 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_kl1hk"]
 font_size = 32
+
+[sub_resource type="Curve" id="Curve_kvuet"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.497076, 0.752023), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_trtic"]
+curve = SubResource("Curve_kvuet")
+
+[sub_resource type="Gradient" id="Gradient_kvuet"]
+colors = PackedColorArray(1, 1, 1, 0.109804, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_trtic"]
+gradient = SubResource("Gradient_kvuet")
+
+[sub_resource type="Curve" id="Curve_rysoc"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1.61847), 0.0, 0.0, 0, 0, Vector2(0.254386, 31.6763), 0.0, 0.0, 0, 0, Vector2(0.497076, -31.4451), 0.0, 0.0, 0, 0, Vector2(0.75731, 28.6705), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_ssvqc"]
+curve = SubResource("Curve_rysoc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_264po"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1150, 640, 200)
+direction = Vector3(1, 1, 0)
+spread = 0.0
+initial_velocity_min = 200.0
+initial_velocity_max = 500.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = 100.0
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = 3.0
+tangential_accel_curve = SubResource("CurveTexture_ssvqc")
+scale_min = 5.0
+scale_max = 5.5
+color_initial_ramp = SubResource("GradientTexture1D_trtic")
+alpha_curve = SubResource("CurveTexture_trtic")
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_l80jb")
@@ -86,6 +126,28 @@ offset_right = 242.0
 offset_bottom = 662.0
 texture = ExtResource("5_kvuet")
 stretch_mode = 4
+
+[node name="Stopwatch" type="Label" parent="Camera2D"]
+z_index = 1
+offset_left = 913.0
+offset_top = 589.0
+offset_right = 1146.0
+offset_bottom = 634.0
+theme_override_fonts/font = ExtResource("11_kvpfn")
+text = "00:00"
+label_settings = SubResource("LabelSettings_kl1hk")
+horizontal_alignment = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Camera2D"]
+visible = false
+z_index = 20
+position = Vector2(586, 318)
+amount = 50
+lifetime = 3.0
+preprocess = 1.0
+trail_enabled = true
+trail_lifetime = 0.6
+process_material = SubResource("ParticleProcessMaterial_264po")
 
 [node name="Course" parent="." groups=["Course"] instance=ExtResource("2_rg2s8")]
 scale = Vector2(8, 8)
