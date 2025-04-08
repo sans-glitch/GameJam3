@@ -30,9 +30,21 @@ func _ready() -> void:
 	set_ui_scale()
 	$Course.scale = ui_scale
 	$GolfBall.scale = ui_scale
+	
+	$Flag.position = Vector2(hole_pos) * tile_size * ui_scale
+	$GolfBall.position = Vector2(ball_pos) * tile_size * ui_scale
+	$Camera2D/ClubManager.switched_clubs.connect(_on_club_switched)
+	$Camera2D/HoleLabel.text = "Hole " + str(LevelManager.curr_level)
+	$Camera2D/Par.text = "Par " + str(LevelManager.get_curr_level_par())
+	$Camera2D/Stopwatch.text = Stopwatch.get_time_string()
+	if LevelManager.curr_level > 3:
+		$Camera2D/Par.show()
+	if LevelManager.curr_level == 1:
+		$Tutorial1.show()
+	elif LevelManager.curr_level == 2:
+		$Tutorial2.show()
 	shot_selected.connect(_on_shot_selected)
 	find_begin_and_end()
-	$Flag.position = Vector2(hole_pos) * tile_size * ui_scale
 	# Generates the first shot selection buttons
 	gen_shot_circle(get_shot_dist())
 	# Sets up dirt particle node
@@ -42,16 +54,7 @@ func _ready() -> void:
 	dirt_particles.scale_amount_max *= ui_scale.x/3
 	add_child(dirt_particles)
 	# Positions the golf ball
-	$GolfBall.position = Vector2(ball_pos) * tile_size * ui_scale
-	$Camera2D/ClubManager.switched_clubs.connect(_on_club_switched)
-	$Camera2D/HoleLabel.text = "Hole " + str(LevelManager.curr_level)
-	$Camera2D/Par.text = "Par " + str(LevelManager.get_curr_level_par())
-	if LevelManager.curr_level > 3:
-		$Camera2D/Par.show()
-	if LevelManager.curr_level == 1:
-		$Tutorial1.show()
-	elif LevelManager.curr_level == 2:
-		$Tutorial2.show()
+	
 	
 	# Setting wind
 	if LevelManager.get_curr_level_wind().length() > 0:
@@ -59,13 +62,16 @@ func _ready() -> void:
 		$Camera2D/GPUParticles2D.show()
 		$Camera2D/GPUParticles2D.process_material.set_direction(Vector3(direction.x, direction.y, 0))
 	
-	##DIALOGUE STUFF
-	#if LevelManager.curr_level == 3:
-		#Dialogic.start("hole3")
-	#elif LevelManager.curr_level == 6:
-		#Dialogic.start("unlockWedge")
-	#elif LevelManager.curr_level == 13:
-		#Dialogic.start("unlockIron")
+	#DIALOGUE STUFF
+	if LevelManager.curr_level == 1:
+		Dialogic.start("start_game")
+	elif LevelManager.curr_level == 3:
+		Dialogic.start("hole3")
+	elif LevelManager.curr_level == 6:
+		Dialogic.start("unlockWedge")
+	elif LevelManager.curr_level == 13:
+		Dialogic.start("unlockIron")
+	
 		
 
 func _process(_delta: float) -> void:
@@ -81,7 +87,8 @@ func _process(_delta: float) -> void:
 			$Tutorial2.curr_slide_num = 6
 			$Tutorial2.show_slide(6)
 			return
-		if strokes > LevelManager.get_curr_level_par():
+		var par = LevelManager.get_curr_level_par()
+		if par != 0 and strokes > par:
 			soft_reset()
 			return
 		LevelManager.increase_level_num()

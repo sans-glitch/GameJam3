@@ -30,6 +30,8 @@ func get_curr_level_wind():
 func increase_level_num():
 	if curr_level < 18:
 		curr_level += 1
+	else:
+		get_tree().change_scene_to_file("res://scenes/title.tscn")
 
 func load_current_level():
 	var level_name = "res://scenes/levels/level_" + str(curr_level) + ".tscn"
