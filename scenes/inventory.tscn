@@ -93,7 +93,6 @@ texture_normal = ExtResource("10_ylenm")
 texture_hover = ExtResource("11_0df5h")
 
 [node name="BallRed" type="TextureButton" parent="CanvasLayer"]
-visible = false
 offset_left = 186.0
 offset_top = 464.0
 offset_right = 202.0
@@ -103,7 +102,6 @@ texture_normal = ExtResource("12_brsb2")
 texture_hover = ExtResource("13_nq6oc")
 
 [node name="BallGold" type="TextureButton" parent="CanvasLayer"]
-visible = false
 offset_left = 358.0
 offset_top = 464.0
 offset_right = 375.0
@@ -113,21 +111,19 @@ texture_normal = ExtResource("14_k86sa")
 texture_hover = ExtResource("15_40feg")
 
 [node name="Glove" type="TextureButton" parent="CanvasLayer"]
-visible = false
-offset_left = 971.0
-offset_top = 191.0
-offset_right = 987.0
-offset_bottom = 207.0
+offset_left = 973.0
+offset_top = 27.0
+offset_right = 989.0
+offset_bottom = 43.0
 scale = Vector2(10, 10)
 texture_normal = ExtResource("16_tla8l")
 texture_hover = ExtResource("17_w24ly")
 
 [node name="Hat" type="TextureButton" parent="CanvasLayer"]
-visible = false
-offset_left = 969.0
-offset_top = 28.0
-offset_right = 985.0
-offset_bottom = 44.0
+offset_left = 974.0
+offset_top = 186.0
+offset_right = 990.0
+offset_bottom = 202.0
 scale = Vector2(10, 10)
 texture_normal = ExtResource("18_ohgsq")
 texture_hover = ExtResource("19_j8d85")

@@ -41,6 +41,7 @@ directories/dtl_directory={
 "sunny": "res://addons/timelines/sunny.dtl",
 "unlockIron": "res://addons/timelines/unlockIron.dtl",
 "unlockWedge": "res://addons/timelines/unlockWedge.dtl",
+"win": "res://addons/timelines/win.dtl",
 "win_game": "res://addons/timelines/win_game.dtl"
 }
 layout/style_list=["res://addons/style3.tres"]

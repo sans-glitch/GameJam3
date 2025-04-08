@@ -76,8 +76,20 @@ func _ready() -> void:
 		#Dialogic.start("red_ball")	
 	#elif LevelManager.curr_level == 6:
 		#Dialogic.start("unlockWedge")
+	#elif LevelManager.curr_level == 8:
+		#Dialogic.start("glove")	
+	#elif LevelManager.curr_level == 9:
+		#Dialogic.start("win")	
 	#elif LevelManager.curr_level == 12:
-		#Dialogic.start("unlockIron")
+		#Dialogic.start("unlockIron")	
+	#elif LevelManager.curr_level == 13:
+		#Dialogic.start("sunny")	
+		#$Camera2D/Sun.show()
+	#elif LevelManager.curr_level == 14:
+		#Dialogic.start("sun_hat")
+		#$Camera2D/Sun.show()
+	#elif LevelManager.curr_level == 16:
+		#Dialogic.start("gold_ball")		
 	#elif LevelManager.curr_level == 18:
 		#Dialogic.start("broken_driver")	
 	

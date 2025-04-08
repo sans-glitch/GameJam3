@@ -138,6 +138,13 @@ text = "00:00"
 label_settings = SubResource("LabelSettings_kl1hk")
 horizontal_alignment = 2
 
+[node name="Sun" type="ColorRect" parent="Camera2D"]
+visible = false
+z_index = 3
+offset_right = 1152.0
+offset_bottom = 643.0
+color = Color(0.953229, 0.924945, 0.732211, 0.921569)
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Camera2D"]
 visible = false
 z_index = 20
@@ -148,10 +155,6 @@ preprocess = 1.0
 trail_enabled = true
 trail_lifetime = 0.6
 process_material = SubResource("ParticleProcessMaterial_264po")
-
-[node name="Sun" type="TextureRect" parent="Camera2D"]
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="Course" parent="." groups=["Course"] instance=ExtResource("2_rg2s8")]
 scale = Vector2(8, 8)

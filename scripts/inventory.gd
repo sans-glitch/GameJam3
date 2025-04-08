@@ -21,6 +21,22 @@ func _ready() -> void:
 		$CanvasLayer/Wedge.show()
 	else:
 		$CanvasLayer/Wedge.hide()
+	if LevelManager.curr_level >=5:
+		$CanvasLayer/BallRed.show()
+	else:
+		$CanvasLayer/BallRed.hide()
+	if LevelManager.curr_level >=16:
+		$CanvasLayer/BallGold.show()
+	else:
+		$CanvasLayer/BallGold.hide()
+	if LevelManager.curr_level >=14:
+		$CanvasLayer/Hat.show()
+	else:
+		$CanvasLayer/Hat.hide()	
+	if LevelManager.curr_level >=8:
+		$CanvasLayer/Glove.show()
+	else:
+		$CanvasLayer/Glove.hide()		
 	
 
 func show_red_ball():
@@ -84,3 +100,4 @@ func _on_glove_pressed():
 	
 func _on_hat_pressed():
 	$"../Camera2D/Sun".hide()
+	
