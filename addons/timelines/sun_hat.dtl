@@ -1,0 +1,6 @@
+join caddie center 
+caddie: How did you beat him even with the sun in your eyes? 
+caddie: While you were playing, I ran to the corner store across the street and got you a sun hat! 
+[signal arg="sunhat"]
+caddie: You should probably put it on in your inventory.
+

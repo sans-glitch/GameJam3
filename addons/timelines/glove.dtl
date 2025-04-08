@@ -1,0 +1,6 @@
+join caddie center 
+caddie: So I was rumanging through my bag to see if I could find something to help you beat this guy...
+caddie: And I did find something... not so sure if it's gonna help you. 
+caddie: It's a golf glove. 
+[signal arg="glove"]
+caddie: Try it on and see if it fits. 

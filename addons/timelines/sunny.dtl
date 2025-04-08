@@ -1,0 +1,9 @@
+join caddie center 
+caddie: Holy halibut! The sun is right in our eyes. 
+caddie: This is not good. 
+caddie: Can you even see?
+leave caddie
+join opp center
+opp: Can't see so well, can you?
+opp: It's not a problem for me, I have a [wave amp=30.0 freq=5.0 connected=1]sun hat.[/wave]
+opp: I bet you're jealous. 
