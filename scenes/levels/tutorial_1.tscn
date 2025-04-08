@@ -47,11 +47,14 @@ offset_bottom = 784.0
 color = Color(0, 0, 0, 0.235294)
 
 [node name="Label" type="Label" parent="1"]
+visible = false
 layout_mode = 0
-offset_left = 335.0
-offset_top = 507.0
-offset_right = 834.0
-offset_bottom = 549.0
+offset_left = 368.0
+offset_top = 521.0
+offset_right = 907.0
+offset_bottom = 563.0
+scale = Vector2(0.796086, 0.892136)
+theme_override_font_sizes/font_size = 15
 text = "[Press right arrow to advance]"
 label_settings = SubResource("LabelSettings_edej7")
 horizontal_alignment = 1

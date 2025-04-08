@@ -5,6 +5,8 @@ var curr_slide_num
 func _ready() -> void:
 	curr_slide_num = 1
 	show_slide(1)	
+	await get_tree().create_timer(2).timeout
+	$"1/Label".show()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
