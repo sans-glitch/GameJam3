@@ -149,6 +149,10 @@ trail_enabled = true
 trail_lifetime = 0.6
 process_material = SubResource("ParticleProcessMaterial_264po")
 
+[node name="Sun" type="TextureRect" parent="Camera2D"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Course" parent="." groups=["Course"] instance=ExtResource("2_rg2s8")]
 scale = Vector2(8, 8)
 
@@ -185,4 +189,5 @@ z_index = 10
 [node name="Tutorial2" parent="." instance=ExtResource("14_pb65x")]
 visible = false
 
+[editable path="Inventory"]
 [editable path="Tutorial1"]

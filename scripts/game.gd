@@ -70,8 +70,10 @@ func _ready() -> void:
 		#Dialogic.start("hole3")
 	#elif LevelManager.curr_level == 6:
 		#Dialogic.start("unlockWedge")
-	#elif LevelManager.curr_level == 13:
+	#elif LevelManager.curr_level == 12:
 		#Dialogic.start("unlockIron")
+	#elif LevelManager.curr_level == 18:
+		#Dialogic.start("broken_driver")	
 	
 		
 
@@ -300,3 +302,19 @@ func set_ui_scale():
 func _show_par_label(argument:String):
 	if argument == "par_show":
 		$Camera2D/Par.show()		
+
+func _show_red_ball(argument:String):
+	if argument == "red_ball":
+		$Inventory/CanvasLayer/BallRed.show()			
+
+func _show_gold_ball(argument:String):
+	if argument == "gold_ball":
+		$Inventory/CanvasLayer/BallGold.show()
+		
+func _show_hat(argument:String):
+	if argument == "sunhat":
+		$Inventory/CanvasLayer/BallGold.show()
+		
+func _show_glove(argument:String):
+	if argument == "glove":
+		$Inventory/CanvasLayer/BallGold.show()				

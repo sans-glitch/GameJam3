@@ -54,6 +54,21 @@ func _on_iron_pressed() -> void:
 func _on_wedge_pressed() -> void:
 	club_manager.set_club("wedge")
 
-
 func _on_background_pressed() -> void:
 	inventory.hide()
+
+func _on_ball_white_pressed() -> void:
+	pass # Replace with function body.
+	
+func _on_ball_red_pressed() -> void:
+	pass # Replace with function body.
+
+func _on_ball_gold_pressed() -> void:
+	pass # Replace with function body.
+
+func _on_glove_pressed():
+	toggle_inv()
+	Dialogic.start("glovep2")
+	
+func _on_hat_pressed():
+	$"../Camera2D/Sun".hide()

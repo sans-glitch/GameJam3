@@ -30,6 +30,7 @@ directories/dch_directory={
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
+"broken_driver": "res://addons/timelines/broken_driver.dtl",
 "glove": "res://addons/timelines/glove.dtl",
 "glovep2": "res://addons/timelines/glovep2.dtl",
 "gold_ball": "res://addons/timelines/gold_ball.dtl",

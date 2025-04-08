@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dp78tnp6acym0"]
+[gd_scene load_steps=20 format=3 uid="uid://dp78tnp6acym0"]
 
 [ext_resource type="Script" uid="uid://cf8xeu5g88tbm" path="res://scripts/inventory.gd" id="1_hj2ta"]
 [ext_resource type="Texture2D" uid="uid://cwi6ce4nh5yog" path="res://assets/club buttons/still d.png" id="2_sr8g6"]
@@ -9,7 +9,16 @@
 [ext_resource type="Texture2D" uid="uid://b0wrxdwx1ofrw" path="res://assets/club buttons/hover i.png" id="7_fiysm"]
 [ext_resource type="Texture2D" uid="uid://c7kwfg2vsd2q0" path="res://assets/club buttons/still w.png" id="8_brsb2"]
 [ext_resource type="Texture2D" uid="uid://b65jiunw1l73b" path="res://assets/club buttons/hover w.png" id="9_nq6oc"]
-[ext_resource type="Texture2D" uid="uid://b4qke8voj4wia" path="res://assets/golf-ball.png" id="10_p7iul"]
+[ext_resource type="Texture2D" uid="uid://dr3s42ohequei" path="res://assets/inventory new assets/Untitled_Artwork-1.png" id="10_ylenm"]
+[ext_resource type="Texture2D" uid="uid://d1nbob82og324" path="res://assets/inventory new assets/Untitled_Artwork-2.png" id="11_0df5h"]
+[ext_resource type="Texture2D" uid="uid://jaxf2rh6h14e" path="res://assets/inventory new assets/Untitled_Artwork-3.png" id="12_brsb2"]
+[ext_resource type="Texture2D" uid="uid://c1e2amxtupcxc" path="res://assets/inventory new assets/Untitled_Artwork-4.png" id="13_nq6oc"]
+[ext_resource type="Texture2D" uid="uid://dkvjadbxoju3b" path="res://assets/inventory new assets/Untitled_Artwork-5.png" id="14_k86sa"]
+[ext_resource type="Texture2D" uid="uid://rxgktwtx633d" path="res://assets/inventory new assets/Untitled_Artwork-6.png" id="15_40feg"]
+[ext_resource type="Texture2D" uid="uid://b5quyyaynkanx" path="res://assets/inventory new assets/Untitled_Artwork-3 copy.png" id="16_tla8l"]
+[ext_resource type="Texture2D" uid="uid://0cylhmh6o4cv" path="res://assets/inventory new assets/Untitled_Artwork-4 copy.png" id="17_w24ly"]
+[ext_resource type="Texture2D" uid="uid://f8j846rya8lq" path="res://assets/inventory new assets/Untitled_Artwork-1 copy.png" id="18_ohgsq"]
+[ext_resource type="Texture2D" uid="uid://bhl06l2f4plid" path="res://assets/inventory new assets/Untitled_Artwork-2 copy.png" id="19_j8d85"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -72,30 +81,64 @@ texture_pressed = ExtResource("9_nq6oc")
 texture_hover = ExtResource("9_nq6oc")
 
 [node name="BallWhite" type="TextureButton" parent="CanvasLayer"]
-visible = false
-offset_left = 6.0
-offset_top = 400.0
-offset_right = 22.0
-offset_bottom = 416.0
+offset_left = 17.0
+offset_top = 464.0
+offset_right = 33.0
+offset_bottom = 480.0
 scale = Vector2(10, 10)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("10_p7iul")
+texture_normal = ExtResource("10_ylenm")
+texture_hover = ExtResource("11_0df5h")
 
 [node name="BallRed" type="TextureButton" parent="CanvasLayer"]
 visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-texture_normal = ExtResource("10_p7iul")
+offset_left = 186.0
+offset_top = 464.0
+offset_right = 202.0
+offset_bottom = 480.0
+scale = Vector2(10, 10)
+texture_normal = ExtResource("12_brsb2")
+texture_hover = ExtResource("13_nq6oc")
 
 [node name="BallGold" type="TextureButton" parent="CanvasLayer"]
 visible = false
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 358.0
+offset_top = 464.0
+offset_right = 375.0
+offset_bottom = 480.0
+scale = Vector2(10, 10)
+texture_normal = ExtResource("14_k86sa")
+texture_hover = ExtResource("15_40feg")
+
+[node name="Glove" type="TextureButton" parent="CanvasLayer"]
+visible = false
+offset_left = 971.0
+offset_top = 191.0
+offset_right = 987.0
+offset_bottom = 207.0
+scale = Vector2(10, 10)
+texture_normal = ExtResource("16_tla8l")
+texture_hover = ExtResource("17_w24ly")
+
+[node name="Hat" type="TextureButton" parent="CanvasLayer"]
+visible = false
+offset_left = 969.0
+offset_top = 28.0
+offset_right = 985.0
+offset_bottom = 44.0
+scale = Vector2(10, 10)
+texture_normal = ExtResource("18_ohgsq")
+texture_hover = ExtResource("19_j8d85")
 
 [connection signal="button_down" from="CanvasLayer/Background" to="." method="_on_background_pressed"]
 [connection signal="pressed" from="CanvasLayer/Driver" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Putter" to="." method="_on_putter_pressed"]
 [connection signal="pressed" from="CanvasLayer/Iron" to="." method="_on_iron_pressed"]
 [connection signal="pressed" from="CanvasLayer/Wedge" to="." method="_on_wedge_pressed"]
+[connection signal="pressed" from="CanvasLayer/BallWhite" to="." method="_on_ball_white_pressed"]
+[connection signal="pressed" from="CanvasLayer/BallRed" to="." method="_on_ball_red_pressed"]
+[connection signal="pressed" from="CanvasLayer/BallGold" to="." method="_on_ball_gold_pressed"]
+[connection signal="pressed" from="CanvasLayer/Glove" to="." method="_on_glove_pressed"]
+[connection signal="pressed" from="CanvasLayer/Hat" to="." method="_on_hat_pressed"]

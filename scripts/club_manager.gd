@@ -63,7 +63,7 @@ func set_club(club : String):
 	elif club=="wedge":
 		curr_club_dist = 1
 		terrain_dependant = false
-	club_label.text = club		
+	club_label.text = curr_club_name().substr(0, 1).to_upper() + curr_club_name().substr(1)		
 	switched_clubs.emit()
 
 ## Returns the name of the current selected club. Returns a string, all lowercase.

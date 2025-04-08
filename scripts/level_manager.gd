@@ -19,7 +19,7 @@ func get_curr_level_clubs():
 		return [ "putter", "wedge", "iron"]
 	elif curr_level <= 5:
 		return ["driver", "putter"]
-	elif curr_level <= 12:
+	elif curr_level <= 11:
 		return ["driver", "putter", "wedge"]
 	else:
 		return ["driver", "putter", "wedge", "iron"]
