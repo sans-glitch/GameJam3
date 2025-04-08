@@ -46,6 +46,8 @@ offset_top = 42.0
 offset_right = 60.0
 offset_bottom = 58.0
 scale = Vector2(10, 10)
+tooltip_text = "Driver: Default distance is 3 tiles but is inhibited by terrain! 
+Select outside the inventory with the 'D' key."
 texture_normal = ExtResource("2_sr8g6")
 texture_pressed = ExtResource("3_p7iul")
 texture_hover = ExtResource("3_p7iul")
@@ -56,6 +58,8 @@ offset_top = 43.0
 offset_right = 250.0
 offset_bottom = 59.0
 scale = Vector2(10, 10)
+tooltip_text = "Putter: Default distance is 1 tile but is inhibited by terrain! 
+Select outside the inventory with the 'P' key."
 texture_normal = ExtResource("4_td2ew")
 texture_pressed = ExtResource("5_ylenm")
 texture_hover = ExtResource("5_ylenm")
@@ -66,6 +70,8 @@ offset_top = 233.0
 offset_right = 216.0
 offset_bottom = 410.0
 scale = Vector2(10, 10)
+tooltip_text = "Iron: Default distance is 2 tiles and is not inhibited by terrain! 
+Select outside the inventory with the 'I' key."
 texture_normal = ExtResource("6_0df5h")
 texture_pressed = ExtResource("7_fiysm")
 texture_hover = ExtResource("7_fiysm")
@@ -76,6 +82,8 @@ offset_top = 233.0
 offset_right = 249.0
 offset_bottom = 249.0
 scale = Vector2(10, 10)
+tooltip_text = "Wedge: Default distance is 1 tile and is not inhibited by terrain!
+Select outside the inventory with the 'W' key."
 texture_normal = ExtResource("8_brsb2")
 texture_pressed = ExtResource("9_nq6oc")
 texture_hover = ExtResource("9_nq6oc")
@@ -89,6 +97,7 @@ scale = Vector2(10, 10)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
+tooltip_text = "Default white golf ball. Classic."
 texture_normal = ExtResource("10_ylenm")
 texture_hover = ExtResource("11_0df5h")
 
@@ -98,6 +107,7 @@ offset_top = 464.0
 offset_right = 202.0
 offset_bottom = 480.0
 scale = Vector2(10, 10)
+tooltip_text = "Red golf ball, how nifty."
 texture_normal = ExtResource("12_brsb2")
 texture_hover = ExtResource("13_nq6oc")
 
@@ -107,6 +117,7 @@ offset_top = 464.0
 offset_right = 375.0
 offset_bottom = 480.0
 scale = Vector2(10, 10)
+tooltip_text = "GOLDEN golf ball. Flashy!"
 texture_normal = ExtResource("14_k86sa")
 texture_hover = ExtResource("15_40feg")
 
@@ -116,6 +127,7 @@ offset_top = 27.0
 offset_right = 989.0
 offset_bottom = 43.0
 scale = Vector2(10, 10)
+tooltip_text = "Golf glove, an essential. Fashionable too."
 texture_normal = ExtResource("16_tla8l")
 texture_hover = ExtResource("17_w24ly")
 
@@ -125,6 +137,7 @@ offset_top = 186.0
 offset_right = 990.0
 offset_bottom = 202.0
 scale = Vector2(10, 10)
+tooltip_text = "Every golfer needs a hat! Helps keep the sun out of your eyes. It suits you well."
 texture_normal = ExtResource("18_ohgsq")
 texture_hover = ExtResource("19_j8d85")
 

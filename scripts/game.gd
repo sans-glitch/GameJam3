@@ -291,7 +291,9 @@ func reset_gui():
 		var direction = LevelManager.get_curr_level_wind()
 		$Camera2D/GPUParticles2D.show()
 		$Camera2D/GPUParticles2D.process_material.set_direction(Vector3(direction.x, direction.y, 0))
-		
+	else:
+		$Camera2D/GPUParticles2D.hide()
+
 func display_dialogue():
 	match LevelManager.curr_level:
 		1:
