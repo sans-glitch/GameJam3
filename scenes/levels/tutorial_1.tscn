@@ -52,7 +52,7 @@ offset_left = 335.0
 offset_top = 507.0
 offset_right = 834.0
 offset_bottom = 549.0
-text = "[Press -> to advance]"
+text = "[Press right arrow to advance]"
 label_settings = SubResource("LabelSettings_edej7")
 horizontal_alignment = 1
 

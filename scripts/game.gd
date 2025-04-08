@@ -49,7 +49,6 @@ func _ready() -> void:
 	if LevelManager.curr_level > 3:
 		$Camera2D/Par.show()
 	if LevelManager.curr_level == 1:
-		#Dialogic.start("start_game")	
 		$Tutorial1.show()
 	elif LevelManager.curr_level == 2:
 		$Tutorial2.show()
@@ -290,4 +289,4 @@ func set_ui_scale():
 	
 func _show_par_label(argument:String):
 	if argument == "par_show":
-		$Camera2D/Par.show()
+		$Camera2D/Par.show()		

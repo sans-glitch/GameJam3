@@ -1,5 +1,6 @@
-opp: Bloody hell! 
-opp: You seriously beat me? 
-opp: YOU?
-opp: Beat ME???
-opp: Nope, nope nope. 
+join opp center [animation="Fade In Up"]
+opp: Bloody hell!
+opp: You seriously beat me?
+opp: [wave amp=30.0 freq=3.0 connected=1]YOU?[/wave]
+opp: Beat [wave amp=30.0 freq=3.0 connected=1]ME???[/wave]
+opp: Nope, nope nope.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c5k7dauwom50e"]
+[gd_scene load_steps=23 format=3 uid="uid://c5k7dauwom50e"]
 
 [ext_resource type="Script" uid="uid://bs8ngbl2jtp40" path="res://scripts/game.gd" id="1_l80jb"]
 [ext_resource type="PackedScene" uid="uid://bhs3krwjvd635" path="res://scenes/dirt_particles.tscn" id="2_fsa2s"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dp78tnp6acym0" path="res://scenes/inventory.tscn" id="12_dinhu"]
 [ext_resource type="PackedScene" uid="uid://dn0aknuxk8xx6" path="res://scenes/levels/tutorial_1.tscn" id="13_uuutb"]
 [ext_resource type="PackedScene" uid="uid://dsq6k26yqoxvd" path="res://scenes/levels/tutorial_2.tscn" id="14_pb65x"]
+[ext_resource type="PackedScene" uid="uid://6n7yat0go1vw" path="res://scenes/canvas_layer.tscn" id="14_trtic"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kl1hk"]
 font_size = 32
@@ -185,4 +186,7 @@ z_index = 10
 [node name="Tutorial2" parent="." instance=ExtResource("14_pb65x")]
 visible = false
 
+[node name="TitleLayer" parent="." instance=ExtResource("14_trtic")]
+
 [editable path="Tutorial1"]
+[editable path="TitleLayer"]
