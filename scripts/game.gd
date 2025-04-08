@@ -49,7 +49,7 @@ func _ready() -> void:
 	if LevelManager.curr_level > 3:
 		$Camera2D/Par.show()
 	if LevelManager.curr_level == 1:
-		Dialogic.start("start_game")	
+		#Dialogic.start("start_game")	
 		$Tutorial1.show()
 	elif LevelManager.curr_level == 2:
 		$Tutorial2.show()
@@ -61,12 +61,12 @@ func _ready() -> void:
 		$Camera2D/GPUParticles2D.process_material.set_direction(Vector3(direction.x, direction.y, 0))
 	
 	##DIALOGUE STUFF
-	if LevelManager.curr_level == 3:
-		Dialogic.start("hole3")
-	elif LevelManager.curr_level == 6:
-		Dialogic.start("unlockWedge")
-	elif LevelManager.curr_level == 13:
-		Dialogic.start("unlockIron")
+	#if LevelManager.curr_level == 3:
+		#Dialogic.start("hole3")
+	#elif LevelManager.curr_level == 6:
+		#Dialogic.start("unlockWedge")
+	#elif LevelManager.curr_level == 13:
+		#Dialogic.start("unlockIron")
 		
 
 func _process(_delta: float) -> void:
@@ -82,7 +82,7 @@ func _process(_delta: float) -> void:
 			$Tutorial2.curr_slide_num = 6
 			$Tutorial2.show_slide(6)
 			return
-		if strokes < LevelManager.get_curr_level_par():
+		if strokes > LevelManager.get_curr_level_par():
 			soft_reset()
 			return
 		LevelManager.increase_level_num()
@@ -93,7 +93,7 @@ func _process(_delta: float) -> void:
 	
 	if $Course.get_tile_terrain_num(ball_pos) == 69:
 		await get_tree().create_timer(.5).timeout
-		get_tree().reload_current_scene()
+		soft_reset()
 	
 	if ($Camera2D/HoleLabel.text == "Hole 1" or $Camera2D/HoleLabel.text == "Hole 2") and $"Tutorial1/1/ColorRect".is_visible_in_tree()==false:
 		$Camera2D/Caddie.show()
