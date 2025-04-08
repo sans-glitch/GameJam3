@@ -3,6 +3,7 @@ extends Control
 @onready var club_manager: Node2D = $"../Camera2D/ClubManager"
 @onready var inventory: CanvasLayer = $CanvasLayer
 @onready var course: Node2D = $"../Course"
+@onready var golf_ball: Sprite2D = $"../GolfBall"
 
 func _ready() -> void:
 	if club_manager.is_available_club("driver"):
@@ -88,11 +89,13 @@ func _on_background_pressed() -> void:
 func _on_ball_white_pressed() -> void:
 	pass # Replace with function body.
 	
-func _on_ball_red_pressed() -> void:
-	pass # Replace with function body.
+func _on_ball_red_pressed():
+	var new_texture = preload("res://assets/inventory new assets/Untitled_Artwork-1 2.png")
+	$"../GolfBall".set_texture(new_texture)
 
-func _on_ball_gold_pressed() -> void:
-	pass # Replace with function body.
+func _on_ball_gold_pressed():
+	var new_texture = preload("res://assets/inventory new assets/Untitled_Artwork-2 2.png")
+	$"../GolfBall".set_texture(new_texture)
 
 func _on_glove_pressed():
 	toggle_inv()

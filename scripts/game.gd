@@ -72,8 +72,8 @@ func _ready() -> void:
 		#Dialogic.start("start_game")
 	#elif LevelManager.curr_level == 3:
 		#Dialogic.start("hole3")
-	#elif LevelManager.curr_level == 5:
-		#Dialogic.start("red_ball")	
+	if LevelManager.curr_level == 5:
+		Dialogic.start("red_ball")	
 	#elif LevelManager.curr_level == 6:
 		#Dialogic.start("unlockWedge")
 	#elif LevelManager.curr_level == 8:
