@@ -22,6 +22,11 @@ func get_curr_level_clubs():
 	else:
 		return ["driver", "putter", "wedge", "iron"]
 
+func get_curr_level_wind():
+	if curr_level < 18:
+		return Vector2i(0, 0)
+	return Vector2i(1, 0)
+
 func increase_level_num():
 	if curr_level < 18:
 		curr_level += 1
