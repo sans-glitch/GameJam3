@@ -4,3 +4,4 @@ opp: You seriously beat me?
 opp: [wave amp=30.0 freq=3.0 connected=1]YOU?[/wave]
 opp: Beat [wave amp=30.0 freq=3.0 connected=1]ME???[/wave]
 opp: Nope, nope nope.
+opp: You beat me in {Stopwatch.get_time_string()}

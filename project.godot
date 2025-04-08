@@ -70,6 +70,7 @@ text/autopauses={}
 [display]
 
 window/size/viewport_height=640
+window/size/mode=2
 window/stretch/mode="canvas_items"
 
 [editor_plugins]

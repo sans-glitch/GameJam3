@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2tc3d08gm2sg"]
+
+[ext_resource type="Texture2D" uid="uid://b8p83e1tgxe8l" path="res://assets/end.png" id="1_mwn6m"]
+
+[node name="End" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1153.0
+offset_bottom = 656.0
+texture = ExtResource("1_mwn6m")
+stretch_mode = 4

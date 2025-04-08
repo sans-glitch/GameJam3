@@ -53,6 +53,7 @@ func _ready() -> void:
 	dirt_particles.scale_amount_min *= ui_scale.x/3
 	dirt_particles.scale_amount_max *= ui_scale.x/3
 	add_child(dirt_particles)
+	
 	# Positions the golf ball
 	
 	
@@ -63,14 +64,14 @@ func _ready() -> void:
 		$Camera2D/GPUParticles2D.process_material.set_direction(Vector3(direction.x, direction.y, 0))
 	
 	#DIALOGUE STUFF
-	if LevelManager.curr_level == 1:
-		Dialogic.start("start_game")
-	elif LevelManager.curr_level == 3:
-		Dialogic.start("hole3")
-	elif LevelManager.curr_level == 6:
-		Dialogic.start("unlockWedge")
-	elif LevelManager.curr_level == 13:
-		Dialogic.start("unlockIron")
+	#if LevelManager.curr_level == 1:
+		#Dialogic.start("start_game")
+	#elif LevelManager.curr_level == 3:
+		#Dialogic.start("hole3")
+	#elif LevelManager.curr_level == 6:
+		#Dialogic.start("unlockWedge")
+	#elif LevelManager.curr_level == 13:
+		#Dialogic.start("unlockIron")
 	
 		
 
@@ -92,7 +93,8 @@ func _process(_delta: float) -> void:
 			soft_reset()
 			return
 		LevelManager.increase_level_num()
-		get_tree().reload_current_scene()
+		if LevelManager.curr_level < 19:
+			get_tree().reload_current_scene()
 	# Updates stroke counter
 	$Camera2D/StrokeLabel.text = "Strokes: " + str(strokes)
 	$Camera2D/Stopwatch.text = Stopwatch.get_time_string()
@@ -108,6 +110,8 @@ func _process(_delta: float) -> void:
 
 ## Signaled function that runs whenever a signal button is selected
 func _on_shot_selected(coords : Vector2i) -> void:
+	var wind = LevelManager.get_curr_level_wind()
+	coords += wind
 	strokes += 1
 	clear_shot_circle()
 	var land_sound = true
@@ -187,10 +191,9 @@ func clear_shot_circle() -> void:
 
 ## Instantiates and places shot select buttons on tile grid
 func gen_shot_circle(rad : int):
-	var wind = LevelManager.get_curr_level_wind()
 	for row in $Course.tile_array.size():
 		for col in $Course.tile_array[0].size():
-			var dist = (ball_pos + wind).distance_to(Vector2i(col, row))
+			var dist = (ball_pos).distance_to(Vector2i(col, row))
 			if abs(rad - dist) < 0.5:
 				add_child(SelectionTile.new_button(Vector2i(col, row), ui_scale, tile_size))
 

@@ -11,11 +11,13 @@ var furthest_unlocked_level
 
 func get_curr_level_par():
 	#TODO: not plus one yet, keep 14 to 13 as par 5
-	var par : Array = [0, 0, 0, 2, 3, 3, 3, 5, 2, 2, 5, 6, 4, 4, 5, 3, 3, 6, 4]
+	var par : Array = [0, 0, 0, 2, 3, 3, 3, 5, 2, 3, 5, 6, 4, 4, 4, 3, 3, 6, 3]
 	return par[curr_level]
 
 func get_curr_level_clubs():
-	if curr_level <= 5:
+	if curr_level == 18:
+		return [ "putter", "wedge", "iron"]
+	elif curr_level <= 5:
 		return ["driver", "putter"]
 	elif curr_level <= 12:
 		return ["driver", "putter", "wedge"]
@@ -23,16 +25,24 @@ func get_curr_level_clubs():
 		return ["driver", "putter", "wedge", "iron"]
 
 func get_curr_level_wind():
+	if curr_level == 9:
+		return Vector2i(-1, 0)
+	if curr_level == 11:
+		return Vector2i(0, 1)	
+	if curr_level == 12:
+		return Vector2i(0, -1)		
 	if curr_level < 18:
 		return Vector2i(0, 0)
-	return Vector2i(1, 0)
+	return Vector2i(-1, 0)
 
 func increase_level_num():
-	if curr_level < 18:
-		curr_level += 1
-	else:
-		get_tree().change_scene_to_file("res://scenes/title.tscn")
-
+	curr_level += 1
+	if curr_level > 18:
+		get_tree().change_scene_to_file("res://scenes/end.tscn")
+		Dialogic.start("win_game")
+		Stopwatch.stopped = true
+		
+		
 func load_current_level():
 	var level_name = "res://scenes/levels/level_" + str(curr_level) + ".tscn"
 	var level = load(level_name)

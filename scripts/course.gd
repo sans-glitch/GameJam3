@@ -24,6 +24,8 @@ func _process(delta: float) -> void:
 ## Gets the amount a specific tile inhibits the club range.
 ## [param coords] is the specific tile's position in the tile map array.
 func get_tile_terrain_num(coords : Vector2i) -> int:
+	if coords.x < 0 or coords.y < 0 or coords.x > get_course_dimensions().x or coords.y > get_course_dimensions().y:
+		return 69
 	return tile_map.get_cell_tile_data(coords).get_custom_data("Terrain")
 
 ## Determines if the specific tile is the starting tile (tee).
