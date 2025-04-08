@@ -191,5 +191,3 @@ z_index = 10
 
 [node name="Tutorial2" parent="." instance=ExtResource("14_pb65x")]
 visible = false
-
-[editable path="Tutorial1"]
