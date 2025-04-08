@@ -328,7 +328,8 @@ func new_level_actions(update_dialogue : bool):
 	club_manager.set_club(LevelManager.get_curr_level_clubs()[0])
 	# Generates the first shot selection buttons
 	gen_shot_circle(get_shot_dist())
-	display_dialogue()
+	if update_dialogue:
+		display_dialogue()
 
 func ball_in_hole():
 	AudioManager.play('res://assets/sounds/hole.wav')
