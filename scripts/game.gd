@@ -312,6 +312,7 @@ func display_dialogue():
 			Dialogic.start("unlockIron")
 		13:
 			Dialogic.start("sunny")
+			$Camera2D/Sun.show()
 		14:
 			Dialogic.start("sun_hat")
 		16:
