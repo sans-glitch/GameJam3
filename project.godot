@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 AudioManager="*res://scripts/audio_manager.gd"
 LevelManager="*res://scripts/level_manager.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+Stopwatch="*res://scripts/stopwatch.gd"
 
 [dialogic]
 
