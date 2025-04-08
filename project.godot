@@ -30,8 +30,14 @@ directories/dch_directory={
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
+"glove": "res://addons/timelines/glove.dtl",
+"glovep2": "res://addons/timelines/glovep2.dtl",
+"gold_ball": "res://addons/timelines/gold_ball.dtl",
 "hole3": "res://addons/timelines/hole3.dtl",
+"red_ball": "res://addons/timelines/red_ball.dtl",
 "start_game": "res://addons/timelines/start_game.dtl",
+"sun_hat": "res://addons/timelines/sun_hat.dtl",
+"sunny": "res://addons/timelines/sunny.dtl",
 "unlockIron": "res://addons/timelines/unlockIron.dtl",
 "unlockWedge": "res://addons/timelines/unlockWedge.dtl",
 "win_game": "res://addons/timelines/win_game.dtl"
