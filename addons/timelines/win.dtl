@@ -1,5 +1,4 @@
-join caddie center 
+join caddie center
 caddie: Uh oh...
-caddie: Looks like there's some wind. 
+caddie: Looks like there's some [tornado radius=2 freq=5.0]wind.
 caddie: No worries, it just will move your ball one extra spot from where you place it!
-
