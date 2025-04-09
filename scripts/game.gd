@@ -310,12 +310,12 @@ func display_dialogue():
 			Dialogic.start("win")
 		12:
 			Dialogic.start("unlockIron")
-		13:
+		15:
 			Dialogic.start("sunny")
 			$Camera2D/Sun.show()
-		14:
-			Dialogic.start("sun_hat")
 		16:
+			Dialogic.start("sun_hat")
+		13:
 			Dialogic.start("gold_ball")
 		18:
 			Dialogic.start("broken_driver")
