@@ -302,7 +302,7 @@ func display_dialogue():
 			Dialogic.start("hole3")
 		5:
 			Dialogic.start("red_ball")
-		6:
+		7:
 			Dialogic.start("unlockWedge")
 		8:
 			Dialogic.start("glove")

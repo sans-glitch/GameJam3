@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://do1p7nc3o15d" path="res://scenes/selection_tile.tscn" id="5_da3uh"]
 [ext_resource type="Texture2D" uid="uid://du43mblfmx7mo" path="res://assets/caddie.png" id="5_kvuet"]
 [ext_resource type="Script" uid="uid://befwamj0fhftu" path="res://scripts/club_manager.gd" id="6_hrvwh"]
-[ext_resource type="PackedScene" uid="uid://bpqbxucdr1ta1" path="res://scenes/levels/level_16.tscn" id="8_trtic"]
+[ext_resource type="PackedScene" uid="uid://bhnvvfy4e5ih2" path="res://scenes/levels/level_15.tscn" id="8_trtic"]
 [ext_resource type="Texture2D" uid="uid://cys452j1jkh12" path="res://assets/flag copy.png" id="10_kvpfn"]
 [ext_resource type="FontFile" uid="uid://d1nrnwyl78knh" path="res://resources/friend-info/Friend Info.otf" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://dp78tnp6acym0" path="res://scenes/inventory.tscn" id="12_dinhu"]

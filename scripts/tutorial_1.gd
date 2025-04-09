@@ -28,6 +28,8 @@ func show_slide(num : int):
 	var selected_slide = get_node(path_string)
 	if selected_slide:
 		selected_slide.show()
+	if num == 3:
+		$"..".soft_reset(false)
 
 
 func _input(event: InputEvent) -> void:

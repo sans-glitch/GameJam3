@@ -1,7 +1,7 @@
 join caddie center
 caddie: Nice work, you're really showing him!
 caddie: Also, guess what I found?
-caddie: A new [wave amp=30.0 freq=5.0 connected=1]red[/wave] golf ball!
+caddie: A new [color=red][wave amp=30.0 freq=5.0 connected=1]red[/wave] [/color]golf ball!
 [signal arg="red_ball"]
 caddie: Here. You can now switch to it in your inventory.
 caddie: I know what you're thinking...

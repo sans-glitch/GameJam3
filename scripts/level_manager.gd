@@ -10,13 +10,13 @@ var furthest_unlocked_level
 
 
 func get_curr_level_par():
-	var par : Array = [0, 0, 0, 2, 3, 3, 3, 2, 5, 3, 6, 4, 4, 6, 5, 4, 4, 3, 3]
+	var par : Array = [0, 0, 0, 2, 3, 3, 3, 2, 5, 3, 8, 4, 3, 6, 5, 4, 3, 3, 3]
 	return par[curr_level]
 
 func get_curr_level_clubs():
 	if curr_level == 18:
 		return [ "putter", "wedge", "iron"]
-	elif curr_level <= 5:
+	elif curr_level <= 6:
 		return ["driver", "putter"]
 	elif curr_level <= 11:
 		return ["driver", "putter", "wedge"]

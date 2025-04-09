@@ -1,31 +1,30 @@
 join opp center [animation="Fade In Up"]
-opp: Bloody hell!
-opp: You seriously beat me?
-opp: [wave amp=30.0 freq=3.0 connected=1]YOU?[/wave]
-opp: Beat [wave amp=30.0 freq=3.0 connected=1]ME???[/wave]
-opp: Nope, nope nope.
-opp: This did not happen.
-opp: How embarassing! 
-opp: And you beat me in {Stopwatch.get_time_string()} minutes?!
-opp: Impossible. 
-opp: We are not to speak of this with anyone, you hear me? You and your caddie better keep you mouths shut. 
-join caddie left 
-caddie: Oh you know I won't! 
-opp: Ugh. 
+opp: [shake]Bloody hell!
+opp: [shake]You seriously beat me?
+opp: [shake][wave amp=30.0 freq=3.0 connected=1]YOU?[/wave]
+opp: [shake]Beat [wave amp=30.0 freq=3.0 connected=1]ME???[/wave]
+opp: [shake]Nope, nope nope.
+opp: [shake]This did not happen.
+opp: [shake]How embarassing!
+opp: [shake]And you beat me in {Stopwatch.get_time_string()} minutes?!
+opp: [shake]Impossible.
+opp: [shake]We are not to speak of this with anyone, you hear me? You and your caddie better keep you mouths shut.
+join caddie left
+caddie: Oh you know I won't!
+opp: Ugh.
 leave opp
 join caddie center
 caddie: Nice job!
 caddie: Well, you can go home now.
 leave caddie
-[wait time="3"] 
+[wait time="3.0"]
 join caddie center
 caddie: Why are you still here?
 leave caddie
-[wait time="60"] 
+[wait time="60.0"]
 join caddie center
-caddie: You sure are patient... 
-caddie: Why would you just wait? 
-caddie: You think that something is going to happen? 
-caddie: Well you're right. 
+caddie: You sure are patient...
+caddie: Why would you just wait?
+caddie: You think that something is going to happen?
+caddie: Well you're right.
 caddie: r && l
-

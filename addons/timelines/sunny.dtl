@@ -1,10 +1,10 @@
-join caddie center 
-caddie: Holy halibut! The sun is right in our eyes. 
-caddie: This is not good. 
+join caddie center
+caddie: Holy halibut! The sun is right in our eyes.
+caddie: This is not good.
 caddie: Can you even see?
 leave caddie
 join opp center
-opp: Sun's in your eyes? 
-opp: Loser. 
+opp: Sun's in your eyes?
+opp: [shake]Loser.
 opp: It's not a problem for me, I have a [wave amp=30.0 freq=5.0 connected=1]sun hat.[/wave]
 opp: I bet you're jealous.
