@@ -10,7 +10,7 @@ var furthest_unlocked_level
 
 
 func get_curr_level_par():
-	var par : Array = [0, 0, 0, 2, 3, 3, 3, 2, 5, 3, 6, 4, 4, 6, 5, 4, 5, 3, 3]
+	var par : Array = [0, 0, 0, 2, 3, 3, 3, 2, 5, 3, 6, 4, 4, 6, 5, 4, 4, 3, 3]
 	return par[curr_level]
 
 func get_curr_level_clubs():
@@ -29,7 +29,9 @@ func get_curr_level_wind():
 	if curr_level == 10:
 		return Vector2i(0, 1)	
 	if curr_level == 12:
-		return Vector2i(0, -1)		
+		return Vector2i(0, -1)	
+	if curr_level == 17:
+		return Vector2i(-1, 0)		
 	if curr_level < 18:
 		return Vector2i(0, 0)
 	return Vector2i(-1, 0)
